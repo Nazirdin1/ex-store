@@ -11,4 +11,5 @@ export const headerMenu=[
         name:"About",
         path:"/about"
     }
+    
 ]

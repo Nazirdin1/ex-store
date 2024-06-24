@@ -39,7 +39,7 @@ const Header = () => {
   };
 
   return (
-    <AppBar position="static" sx={{ bgcolor: "#fff", pt:"40px",pb:"16px" }} elevation={0}>
+    <AppBar position="static" sx={{ bgcolor: "#fff", pt:"40px",pb:"16px"  , borderBottom:"1px solid rgba(0, 0, 0, 1) " }} elevation={0} >
       <Container maxWidth="lg" sx={{p:"0px"}}>
         <Toolbar sx={{ bgcolor: "#fff",p:"0px" }}>
           <Typography

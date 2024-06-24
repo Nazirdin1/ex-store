@@ -19,7 +19,11 @@ const App = () => {
             ShopNow
           </Typography>
 
-          <select >
+          <select  style={{
+            background:"#000",
+            color:"#fff",
+            border:"none"
+          }}>
             <option value="en">English</option>
             <option value="ru">Russian</option>
             <option value="kg">Kyrgyz</option>
@@ -28,7 +32,7 @@ const App = () => {
       </Box>
       <Header />
       <AppRoutes />
-      Footer
+     
     </div>
   );
 };
