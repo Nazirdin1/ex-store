@@ -2,6 +2,7 @@ import React from "react";
 import AppRoutes from "./routes/routes";
 import Header from "./components/header/Header";
 import { Box, Container, MenuItem, Select, Typography } from "@mui/material";
+import Footer from "./components/footer/Footer";
 
 const App = () => {
   return (
@@ -32,7 +33,8 @@ const App = () => {
       </Box>
       <Header />
       <AppRoutes />
-     
+      
+     <Footer/>
     </div>
   );
 };
