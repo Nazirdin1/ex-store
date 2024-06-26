@@ -10,6 +10,10 @@ export const headerMenu=[
     {
         name:"About",
         path:"/about"
+    },
+    {
+        name:"Sign Up",
+        path:"/signUp"
     }
     
 ]

@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+/* .Cart:hover >.btnCart{
+    display: flex !important;
+  }
+   */

@@ -1,31 +1,4 @@
-// import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-// import service from "../../api/service";
 
-// export const fetchProductsByCategory=createAsyncThunk(
-//     "products/fetchProductsByCategory",
-//     async (id)=>{
-//         const {}=await service.getCategoryById(id)
-//         console.log(data, "---data---");
-//     }
-// );
-
-// const productsSlice=createSlice({
-
-//     name:"products",
-//     initialState:{
-//         items:[],
-//         isError:"",
-//         isLoading:""
-//     },
-//     reducers:{},
-//     extraReducers:(builder)=>{
-
-//     }
-// }
-
-// )
-
-// export default productsReducer = productsSlice.reducer
 
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 

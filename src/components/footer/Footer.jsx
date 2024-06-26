@@ -7,9 +7,11 @@ import { FaInstagram, FaFacebookF } from "react-icons/fa";
 import { FiTwitter } from "react-icons/fi";
 
 import { FaLinkedinIn } from "react-icons/fa6";
+import { Container } from "@mui/material";
 const Footer = () => {
   return (
     <div className="w-100% bg-black p-12 mt-20">
+      <Container maxWidth="lg" sx={{p:"0px"}}>
       <div className="flex items-start  justify-around">
         <div className="">
           <h3 className="text-white text-2xl">Exclusive</h3>
@@ -99,6 +101,7 @@ const Footer = () => {
       <p className="text-white text-center mt-4">
         Copyright Rimel 2022. All right reserved
       </p>
+      </Container>
     </div>
   );
 };
