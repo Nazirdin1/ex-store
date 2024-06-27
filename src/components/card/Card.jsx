@@ -34,15 +34,16 @@ import {
   Typography,
   Box,
 } from "@mui/material";
-import { FaRegHeart } from "react-icons/fa";
+import { FaRegHeart, FaStar, FaStarHalfAlt } from "react-icons/fa";
 
-const Card = ({ title, images, price }) => {
+const Card = ({ title, images, price, id }) => {
   const discount = 30; // скидки
   const discountPrice = price - (price * discount) / 100;
+  const randomRating = Math.floor(Math.random()  * 100) + 1; 
 
   return (
-    <MuiCard  className="Cart" sx={{ position: "relative", maxWidth: 270 }}>
-      <Box 
+    <MuiCard className="Cart" sx={{ margin:"20px" , position: "relative", maxWidth: 270, }}>
+      <Box
         sx={{
           position: "absolute",
           top: 10,
@@ -84,8 +85,7 @@ const Card = ({ title, images, price }) => {
           <FaRegHeart />
         </Box>
       </Box>
-      <CardMedia 
-      
+      <CardMedia
         component="img"
         height="140"
         image={images}
@@ -93,7 +93,7 @@ const Card = ({ title, images, price }) => {
         sx={{ zIndex: 1 }}
       />
       <button
-      className="btnCart"
+        className="btnCart"
         style={{
           background: "black",
           color: "white",
@@ -103,12 +103,13 @@ const Card = ({ title, images, price }) => {
           alignItems: "center",
           justifyContent: "center",
           position: "absolute",
-          top: 220,
+          // top: 200,
+          marginTop:"-50px"
         }}
       >
         Add To Cart
       </button>
-      <CardContent >
+      <CardContent>
         <Typography variant="subtitle1" component="div">
           <Box
             sx={{
@@ -116,8 +117,8 @@ const Card = ({ title, images, price }) => {
               color: "black",
               fontWeight: "500",
               margin: 0,
-              lineHeight: "1.2em", // Высота строки, соответствующая высоте текста
-              minHeight: "2.4em", // Минимальная высота для двух строк текста
+              lineHeight: "1.2em",
+              minHeight: "2.4em",
               display: "-webkit-box",
               WebkitLineClamp: 2,
               WebkitBoxOrient: "vertical",
@@ -142,6 +143,14 @@ const Card = ({ title, images, price }) => {
             <Box sx={{ textDecoration: "line-through", color: "grey" }}>
               <b>${price}</b>
             </Box>
+          </Box>
+          <Box sx={{ display: "flex", alignItems: "center", color: "rgba(255, 173, 51, 1)" }}>
+            <FaStar />
+            <FaStar />
+            <FaStar />
+            <FaStar />
+            <FaStarHalfAlt />
+            <b style={{ marginLeft: "20px", color: "grey" }}>({3* randomRating})</b>
           </Box>
         </Typography>
       </CardContent>

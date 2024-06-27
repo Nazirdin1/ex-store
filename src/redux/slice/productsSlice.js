@@ -7,7 +7,7 @@ import service from "../../api/service";
 export const fetchProductsByCategory = createAsyncThunk(
   "products/fetchProductsByCategory",
   async (id) => {
-    console.log('87888');
+    
     const { data } = await service.getCategoryById(id);
     console.log(data, "---data---");
     return data;

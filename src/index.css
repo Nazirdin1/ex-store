@@ -3,8 +3,7 @@
 @tailwind utilities;
 
 
-
-/* .Cart:hover >.btnCart{
+.Cart:hover >.btnCart{
     display: flex !important;
   }
-   */
+  

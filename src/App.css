@@ -17,6 +17,8 @@ a{
 button{
   border: none;
   cursor: pointer;
+  transition: .5s;
+  margin: 0 10px;
 }
 
 input{
