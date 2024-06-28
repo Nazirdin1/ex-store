@@ -88,6 +88,7 @@ const Card = ({ title, images, price, id }) => {
       <CardMedia
         component="img"
         height="140"
+        // image="https://mui.com/static/images/cards/paella.jpg"
         image={images}
         alt={title}
         sx={{ zIndex: 1 }}
@@ -150,7 +151,7 @@ const Card = ({ title, images, price, id }) => {
             <FaStar />
             <FaStar />
             <FaStarHalfAlt />
-            <b style={{ marginLeft: "20px", color: "grey" }}>({3* randomRating})</b>
+            <b style={{ marginLeft: "20px", color: "grey" }}>({3*randomRating})</b>
           </Box>
         </Typography>
       </CardContent>

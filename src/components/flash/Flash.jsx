@@ -52,7 +52,7 @@ const Flash = () => {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: Math.min(items.length, 2),
+          slidesToShow: Math.min(items.length, 1),
         },
       },
     ],
