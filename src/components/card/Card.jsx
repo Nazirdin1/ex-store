@@ -1,31 +1,3 @@
-// import React from "react";
-// import {
-//   Card as MuiCard,
-//   CardMedia,
-//   CardContent,
-//   Typography,
-// } from "@mui/material";
-
-// const Card = ({ title }) => {
-//   return (
-//     <MuiCard sx={{ maxWidth: 345 }}>
-//       <CardMedia
-//         component="img"
-//         height="194"
-//         image="https://mui.com/static/images/cards/paella.jpg"
-//         alt="Paella dish"
-//       />
-//       <CardContent>
-//         <Typography variant="body2" color="text.secondary">
-//           {title}
-//         </Typography>
-//       </CardContent>
-//     </MuiCard>
-//   );
-// };
-
-// export default Card;
-
 import React from "react";
 import {
   Card as MuiCard,
@@ -35,14 +7,21 @@ import {
   Box,
 } from "@mui/material";
 import { FaRegHeart, FaStar, FaStarHalfAlt } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { addItem } from "../../redux/slice/CartSlice";
+const Card = (props) => {
+  const { title, images, price, id } = props.el;
+  const dispatch = useDispatch();
 
-const Card = ({ title, images, price, id }) => {
   const discount = 30; // скидки
   const discountPrice = price - (price * discount) / 100;
-  const randomRating = Math.floor(Math.random()  * 100) + 1; 
+  const randomRating = Math.floor(Math.random() * 100) + 1;
 
   return (
-    <MuiCard className="Cart" sx={{ margin:"20px" , position: "relative", maxWidth: 270, }}>
+    <MuiCard
+      className="Cart"
+      sx={{ margin: "20px", position: "relative", maxWidth: 270 }}
+    >
       <Box
         sx={{
           position: "absolute",
@@ -88,13 +67,16 @@ const Card = ({ title, images, price, id }) => {
       <CardMedia
         component="img"
         height="140"
-        // image="https://mui.com/static/images/cards/paella.jpg"
-        image={images}
+        image="https://mui.com/static/images/cards/paella.jpg"
+        // image={images}
         alt={title}
         sx={{ zIndex: 1 }}
       />
       <button
         className="btnCart"
+        onClick={() => {
+          dispatch(addItem(props.el));
+        }}
         style={{
           background: "black",
           color: "white",
@@ -105,7 +87,7 @@ const Card = ({ title, images, price, id }) => {
           justifyContent: "center",
           position: "absolute",
           // top: 200,
-          marginTop:"-50px"
+          marginTop: "-50px",
         }}
       >
         Add To Cart
@@ -145,13 +127,21 @@ const Card = ({ title, images, price, id }) => {
               <b>${price}</b>
             </Box>
           </Box>
-          <Box sx={{ display: "flex", alignItems: "center", color: "rgba(255, 173, 51, 1)" }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              color: "rgba(255, 173, 51, 1)",
+            }}
+          >
             <FaStar />
             <FaStar />
             <FaStar />
             <FaStar />
             <FaStarHalfAlt />
-            <b style={{ marginLeft: "20px", color: "grey" }}>({3*randomRating})</b>
+            <b style={{ marginLeft: "20px", color: "grey" }}>
+              ({3 * randomRating})
+            </b>
           </Box>
         </Typography>
       </CardContent>

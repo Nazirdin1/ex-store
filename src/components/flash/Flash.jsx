@@ -1,22 +1,3 @@
-// import React from "react";
-// import Card from "../card/Card";
-// import { Container } from "@mui/material";
-// import { useSelector } from "react-redux";
-
-// const Flash = () => {
-
-//   const {items,isError,isLoading}= useSelector(store=>store.products)
-
-//   return (
-//     <Container maxWidth="lg" sx={{ display: "flex", gap: "20px" , marginTop:"100px"}}>
-//       {items.map(el=> <Card  key={el?.id}  title={el?.title} />)}
-
-//     </Container>
-//   );
-// };
-//  export default Flash;
-
-// export default Flash;import React from "react";
 
 import React, { useState } from "react";
 import { Container, Button } from "@mui/material";
@@ -28,7 +9,7 @@ import Card from "../card/Card";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 
 const Flash = () => {
-  const { items } = useSelector((store) => store.products);
+  const { items, categoryName } = useSelector((store) => store.products);
   const [showAllProducts, setShowAllProducts] = useState(false);
 
   const sliderSettings = {
@@ -80,6 +61,7 @@ const Flash = () => {
 
   return (
     <Container maxWidth="lg" sx={{ marginTop: "100px", padding: "0 20px" }}>
+      <h2 style={ {textAlign:"center"}}> {categoryName} </h2>
       {!showAllProducts ? (
         <>
           <div style={{ position: "absolute", right: "200px", marginTop: "-50px" }}>
@@ -120,10 +102,7 @@ const Flash = () => {
             {items.map((el) => (
               <Card
                 key={el?.id}
-                id={el?.id}
-                title={el?.title}
-                images={el?.images[1]}
-                price={el?.price}
+                el={el}
               />
             ))}
           </Slider>
@@ -156,12 +135,9 @@ const Flash = () => {
           >
             {items.map((el) => (
               <Card
-                key={el?.id}
-                id={el?.id}
-                title={el?.title}
-                images={el?.images[1]}
-                price={el?.price}
-                style={{
+              key={el?.id}
+              el={el}             
+                 style={{
                   width: "30%",
                   margin: "10px",
                 }}

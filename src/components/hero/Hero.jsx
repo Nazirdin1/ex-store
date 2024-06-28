@@ -58,16 +58,16 @@ const Hero = () => {
     const getCategories = async () => {
       const { data } = await storeService.getAllCategories();
       console.log(data, "---data---");
-      setCategories(data);
-      dispatch(fetchProductsByCategory(data[0]?.id));
+      setCategories(data.slice(0,8));
+      dispatch(fetchProductsByCategory({ id: data[0]?.id,name:data[0]?.name}));
     }
 // dispatch(fetch....());
     getCategories();
-  }, []);
+  }, [dispatch]);
 
-  const handleListItemClick = (id) => {
+  const handleListItemClick = (id, name) => {
 
-    dispatch(fetchProductsByCategory(id));
+    dispatch(fetchProductsByCategory({id , name}));
   };
 
   return (
@@ -83,7 +83,7 @@ const Hero = () => {
             {categories?.map((el) => (
               <ListItem sx={{ cursor: "pointer" }} key={el.id}>
                 <ListItemText
-                  onClick={() => handleListItemClick(el.id)}
+                  onClick={() => handleListItemClick(el.id ,el.name)}
                   primary={`${el.name}`}
                 />
               </ListItem>
