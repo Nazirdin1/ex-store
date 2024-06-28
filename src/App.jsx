@@ -3,11 +3,13 @@ import AppRoutes from "./routes/routes";
 import Header from "./components/header/Header";
 import { Box, Container, MenuItem, Select, Typography } from "@mui/material";
 import Footer from "./components/footer/Footer";
-
+import "./App.css"
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 const App = () => {
   return (
     <div>
-     
+     <ToastContainer/>
       <Box sx={{ bgcolor: "#000", py: "12px" }}>
         <Container maxWidth="lg" sx={{display: "flex" , justifyContent:"center",px:"55px" ,margin:"0 auto  ", paddingRight:"20px"}}>
           <Typography
@@ -24,7 +26,7 @@ const App = () => {
             background:"#000",
             color:"#fff",
             border:"none"
-          }}>
+          }}> 
             <option value="en">English</option>
             <option value="ru">Russian</option>
             <option value="kg">Kyrgyz</option>
