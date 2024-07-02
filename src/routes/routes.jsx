@@ -4,6 +4,9 @@ import SignUp from "../pages/signUp/SignUp";
 import NotFoundPage from "../pages/not-found-page/NotFoundPage";
 import Cart from "../pages/cart/Cart";
 import Heart from "../pages/heart/Heart";
+import About from "../pages/about/About";
+import Contact from "../pages/contact/Contact";
+import CartTwo from "../pages/cart/CartTwo";
 
 const menu = [
     {
@@ -12,7 +15,17 @@ const menu = [
         component: HomePage
     },
     {
-        path: "/signUp",
+        path: "about",
+        name: "About",
+        component: About
+    },
+    {
+        path: "contact",
+        name: "Contact",
+        component: Contact
+    },
+    {
+        path: "signUp",
         name: "Sign Up",
         component: SignUp
     },
@@ -25,6 +38,11 @@ const menu = [
         path: "/heart",
         name: "Heart",
         component:Heart
+    },
+    {
+        path: "/cartTwo",
+        name: "CartTwo",
+        component:CartTwo
     }
 ];
 

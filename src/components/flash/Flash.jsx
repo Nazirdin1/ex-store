@@ -103,6 +103,8 @@ const Flash = () => {
               <Card
                 key={el?.id}
                 el={el}
+                showRating={true}
+                CartButton={false}
               />
             ))}
           </Slider>
@@ -135,12 +137,15 @@ const Flash = () => {
           >
             {items.map((el) => (
               <Card
+              
               key={el?.id}
               el={el}             
                  style={{
                   width: "30%",
                   margin: "10px",
                 }}
+                showRating={true}
+                CartButton={false}
               />
             ))}
           </div>

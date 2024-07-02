@@ -155,8 +155,7 @@
 
 // export default Card;
 
-
-import  { useState } from "react";
+import { useState } from "react";
 import {
   Card as MuiCard,
   CardMedia,
@@ -167,37 +166,41 @@ import {
 } from "@mui/material";
 import { FaRegHeart, FaHeart, FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem2 as addToHeart, removeItem2 as removeFromHeart } from "../../redux/slice/HeartSlice"; // Используем правильные имена экспорта из HeartSlice
+import { addItem2 as addToHeart, removeItem2 as removeFromHeart } from "../../redux/slice/HeartSlice";
 import { addItem as addToCart } from "../../redux/slice/CartSlice";
 import { toast } from "react-toastify";
+import { RiDeleteBinLine } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
-const Card = ({ el }) => {
+const def_img = "https://mui.com/static/images/cards/paella.jpg";
+
+const Card = ({ el, showRating,CartButton }) => {
   const { title, images, price, id } = el;
   const dispatch = useDispatch();
 
-  // Check if the item is liked by checking the state from Redux
-  const isLiked = useSelector(state =>
-    state.heart.items2.some(item => item.id === id)
+  const isLiked = useSelector((state) =>
+    state.heart.items2.some((item) => item.id === id)
   );
 
-  const discount = 30; // Discount percentage
+  const discount = 30;
   const discountPrice = price - (price * discount) / 100;
   const randomRating = Math.floor(Math.random() * 100) + 1;
 
-  // Function to handle like button click
   const handleLikeClick = () => {
     if (isLiked) {
-      dispatch(removeFromHeart(el)); // Если уже добавлено, удаляем из избранного
+      dispatch(removeFromHeart(el));
       toast("Removed from favorites");
     } else {
-      dispatch(addToHeart(el)); // Если еще не добавлено, добавляем в избранное
+      dispatch(addToHeart(el));
       toast("Added to favorites");
     }
   };
 
   return (
     <MuiCard
-      className="Card"
+   
+
+      className="Cart"
       sx={{ margin: "20px", position: "relative", maxWidth: 270 }}
     >
       <Box
@@ -234,20 +237,22 @@ const Card = ({ el }) => {
             width: "40px",
             height: "40px",
             marginTop: "8px",
-            color: isLiked ? "red" : "black",
+            color: isLiked ? "black" : "black",
             cursor: "pointer",
           }}
         >
-          {isLiked ? <FaHeart /> : <FaRegHeart />}
+          {isLiked ? <RiDeleteBinLine /> : <FaRegHeart />}
         </IconButton>
       </Box>
+     
       <CardMedia
         component="img"
         height="140"
-        image={images}
+        image={images[0].length > 0 ? images[0].replaceAll('["', "") : def_img}
         alt={title}
         sx={{ zIndex: 1 }}
       />
+    
       <button
         className="btnCart"
         onClick={() => {
@@ -259,13 +264,11 @@ const Card = ({ el }) => {
           color: "white",
           width: "100%",
           height: "50px",
+          display: CartButton ? "flex" : "none",
           alignItems: "center",
-          display: "flex",
           justifyContent: "center",
           position: "absolute",
-          bottom: 0,
-          border: "none",
-          cursor: "pointer",
+          top: 220,
         }}
       >
         Add To Cart
@@ -277,7 +280,7 @@ const Card = ({ el }) => {
               fontSize: "16px",
               color: "black",
               fontWeight: "500",
-              margin: 0,
+              margin: "10px 0",
               lineHeight: "1.2em",
               minHeight: "2.4em",
               display: "-webkit-box",
@@ -305,22 +308,27 @@ const Card = ({ el }) => {
               <b>${price}</b>
             </Box>
           </Box>
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              color: "rgba(255, 173, 51, 1)",
-            }}
-          >
-            <FaStar />
-            <FaStar />
-            <FaStar />
-            <FaStar />
-            <FaStarHalfAlt />
-            <b style={{ marginLeft: "20px", color: "grey" }}>
-              ({3 * randomRating})
-            </b>
-          </Box>
+
+          {/* Секция рейтинга */}
+          {showRating && (
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                color: "rgba(255, 173, 51, 1)",
+                marginTop: "8px",
+              }}
+            >
+              <FaStar />
+              <FaStar />
+              <FaStar />
+              <FaStar />
+              <FaStarHalfAlt />
+              <b style={{ marginLeft: "20px", color: "grey" }}>
+                ({3 * randomRating})
+              </b>
+            </Box>
+          )}
         </Typography>
       </CardContent>
     </MuiCard>
