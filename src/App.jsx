@@ -1,12 +1,19 @@
-import React from "react";
+
 import AppRoutes from "./routes/routes";
 import Header from "./components/header/Header";
-import { Box, Container, MenuItem, Select, Typography } from "@mui/material";
+import { Box, Container,  Typography } from "@mui/material";
 import Footer from "./components/footer/Footer";
-import "./App.css"
-import { ToastContainer } from "react-toastify";
+import {ToastContainer} from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
+import "./App.css"
+import { useTranslation } from "react-i18next";
+
 const App = () => {
+  const { t, i18n } = useTranslation();
+
+  const handleChangeLang = ({target: {value}}) => {
+    i18n.changeLanguage(value)
+  }
   return (
     <div>
      <ToastContainer/>
@@ -22,11 +29,11 @@ const App = () => {
             ShopNow
           </Typography>
 
-          <select  style={{
+          <select onChange={handleChangeLang}  style={{
             background:"#000",
             color:"#fff",
             border:"none"
-          }}> 
+          }}>
             <option value="en">English</option>
             <option value="ru">Russian</option>
             <option value="kg">Kyrgyz</option>

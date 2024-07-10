@@ -1,468 +1,94 @@
-// import { Box, Button, Container, IconButton } from "@mui/material";
-
-// import { TiDelete } from "react-icons/ti";
-// import { useSelector } from "react-redux";
-// const Cart = () => {
-//   const { items } = useSelector((state) => state.cart);
-//   const total =
-//     items?.reduce((prev, next) => prev + next.price * next.quantity, 0) || 0;
-//   return (
-//     <div>
-//       <Container maxWidth="lg" sx={{ pt: "180px" }}>
-//         <Box>
-//           <Box
-//             sx={{
-//               mb: "40px",
-//               display: "flex",
-//               border: "1px solid red",
-//               justifyContent: "space-between",
-//               padding: "5px",
-//             }}
-//           >
-//             <Box sx={{ with: "400px" }}>Product</Box>
-//             <Box sx={{ with: "200px" }}>Price</Box>
-//             <Box sx={{ with: "200px" }}>Quantity</Box>
-//             <Box sx={{ with: "200px" }}>Subtotal</Box>
-//           </Box>
-//           {items?.map((el) => (
-//             <Box
-//               key={el?.id}
-//               sx={{
-//                 mb: "20px ",
-//                 display: "flex",
-//                 border: "1px solid red",
-//                 alignItems: "center",
-//                 justifyContent: "space-between",
-//                 padding: "5px",
-//               }}
-//             >
-//               <Box
-//                 sx={{
-//                   with: "400px",
-//                   position: "relative",
-//                   display: "flex",
-//                   gap: "20px",
-//                   alignItems: "center",
-//                 }}
-//               >
-//                 <IconButton
-//                   sx={{
-//                     position: "absolute",
-//                     top: "-20px",
-//                     left: "-20px",
-//                     color: "red",
-//                     "&:hover": {
-//                       backgroundColor: "transparent",
-//                     },
-//                   }}
-//                 >
-//                   <TiDelete />
-//                 </IconButton>
-//                 <img
-//                   width={"54px"}
-//                   src={el?.images[0].replaceAll('["', "")}
-//                   alt="img"
-//                 />
-//                 <p>{el?.title}</p>
-//               </Box>
-//               <Box sx={{ with: "200px" }}>$ {el?.price}</Box>
-//               <Box
-//                 sx={{
-//                   with: "200px",
-//                   display: "flex",
-//                   justifyContent: "center",
-//                 }}
-//               >
-//                 <input
-//                   style={{ width: "60px" }}
-//                   type="number"
-//                   value={el.quantity}
-//                 />
-//               </Box>
-//               <Box sx={{ with: "200px" }}>$ {el?.price * el.quantity}</Box>
-//             </Box>
-//           ))}
-
-//           <Box
-//             sx={{
-//               mb: "80px",
-//               display: "flex",
-//               justifyContent: "space-between",
-//               mt: "40px",
-//             }}
-//           >
-//             <Button
-//               sx={{
-//                 border: "1px solid black",
-//                 color: "black",
-//                 "&:hover": {
-//                   border: "1px solid black",
-//                 },
-//               }}
-//               variant="outlined"
-//             >
-//               Return to Shop
-//             </Button>
-//             <Button
-//               sx={{
-//                 border: "1px solid black",
-//                 color: "black",
-//                 "&:hover": {
-//                   border: "1px solid black",
-//                 },
-//               }}
-//               variant="outlined"
-//             >
-//               Updata Cart
-//             </Button>
-//           </Box>
-//         </Box>
-//         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-//           <Box>
-//             <input
-//               style={{
-//                 border: "1px solid black",
-//                 padding: "5px",
-//                 borderRadius: "5px",
-//                 fontSize: "16px",
-//               }}
-//               type="text"
-//               placeholder="Coupon Code"
-//             />
-
-//             <Button
-//               sx={{
-//                 color: "#fff",
-//                 fontSize: "16px",
-//                 background: "rgba(219, 68, 68, 1)",
-//                 padding: "5px 15px",
-//                 marginLeft: "16px",
-//                 "&:hover": {
-//                   color: "#fff",
-//                   fontSize: "16px",
-//                   background: "rgba(219, 68, 68, 1)",
-//                 },
-//               }}
-//             >
-//               Apply Coupon
-//             </Button>
-//           </Box>
-//           <Box
-//             maxWidth={470}
-//             sx={{
-//               width: "470px",
-//               border: "1px solid black",
-//               padding: "32px 24px",
-//             }}
-//           >
-//             <h3
-//               style={{
-//                 fontSize: "20px",
-//                 color: "black",
-//                 fontWeight: "500",
-//               }}
-//             >
-//               Cart Total
-//             </h3>
-//             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-//               <p
-//                 style={{
-//                   fontSize: "16px",
-//                   color: "black",
-//                   fontWeight: "400",
-//                 }}
-//               >
-//                 Shipping
-//               </p>
-//               <p
-//                 style={{
-//                   fontSize: "16px",
-//                   color: "black",
-//                   fontWeight: "400",
-//                 }}
-//               >
-//                 Free
-//               </p>
-//             </Box>
-
-//             <Box
-//               sx={{
-//                 display: "flex",
-//                 justifyContent: "space-between",
-//                 borderTop: "1px solid black",
-//                 padding: "15px 0",
-//                 margin: "15px 0",
-//               }}
-//             >
-//               <p>Total</p>
-//               <p>{total}</p>
-//             </Box>
-//             <Button
-//               sx={{
-//                 color: "#fff",
-//                 fontSize: "16px",
-//                 background: "rgba(219, 68, 68, 1)",
-//                 padding: "5px 15px",
-//                 marginLeft: "16px",
-//                 display: "flex",
-//                 alignItems: "center",
-//                 justifyContent: "center",
-//                 margin: "16px auto",
-//                 "&:hover": {
-//                   color: "#fff",
-                
-//                 background: "rgba(219, 68, 68, 1)",
-//                 },
-//               }}
-//             >
-//               Procees to checkout
-//             </Button>
-//           </Box>
-//         </Box>
-//       </Container>
-//     </div>
-//   );
-// };
-
-// export default Cart;
-
-
 import { Box, Button, Container, IconButton } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
 import { TiDelete } from "react-icons/ti";
-import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-
+import { removeItem, updateCart } from "../../redux/slices/cartSlice";
+import {Link} from "react-router-dom"
+import { useEffect } from "react";
 const Cart = () => {
-  const dispatch = useDispatch();
-  const { items } = useSelector((state) => state.cart);
+  const { items } = useSelector((store) => store.cart);
+  const dispatch = useDispatch()
+  const total = items?.reduce((prev, next) => prev + next.price * next.quantity, 0) || 0
+
+  useEffect(() => {
+    dispatch(updateCart())
+  }, [] )
+
 
   const handleRemoveItem = (id) => {
-    dispatch({ type: "cart/removeItem", payload: { id } });
-  };
-
-  const handleQuantityChange = (id, newQuantity) => {
-    if (newQuantity >= 1) {
-      dispatch({ type: "cart/updateQuantity", payload: { id, quantity: newQuantity } });
-    }
-  };
-
-  const total = items.reduce((prev, next) => prev + next.price * next.quantity, 0);
-
+    dispatch(removeItem({id}))
+  }
   return (
     <div>
-      <Container maxWidth="lg" sx={{ pt: "180px" }}>
+      <div>
+        <img src={items.images} alt="" />
+      </div>
+
+      <Container maxWidth="lg" sx={{paddingTop:'180px'}}>
         <Box>
-          <Box
-            sx={{
-              mb: "40px",
-              display: "flex",
-              border: "1px solid red",
-              justifyContent: "space-between",
-              padding: "5px",
-            }}
-          >
+          <Box sx={{ padding:'24px 40px', display: "flex",  justifyContent:"space-between",  marginBottom:"40px", boxShadow: "0px 1px 13px 0px #0000000D"
+}}>
             <Box sx={{ width: "400px" }}>Product</Box>
             <Box sx={{ width: "200px" }}>Price</Box>
             <Box sx={{ width: "200px" }}>Quantity</Box>
             <Box sx={{ width: "200px" }}>Subtotal</Box>
           </Box>
-          {items.map((el) => (
-            <Box
-              key={el.id}
-              sx={{
-                mb: "20px",
-                display: "flex",
-                border: "1px solid red",
-                alignItems: "center",
-                justifyContent: "space-between",
-                padding: "5px",
-              }}
-            >
-              <Box
-                sx={{
-                  width: "400px",
-                  position: "relative",
-                  display: "flex",
-                  gap: "20px",
-                  alignItems: "center",
-                }}
-              >
-                <IconButton
-                  onClick={() => handleRemoveItem(el.id)}
-                  sx={{
-                    position: "absolute",
-                    top: "-20px",
-                    left: "-20px",
-                    color: "red",
-                    "&:hover": {
-                      backgroundColor: "transparent",
-                    },
-                  }}
-                >
-                  <TiDelete />
-                </IconButton>
-                
-                <img
-                  width={"54px"}
-                  src={el?.images[0].replaceAll('["', "")}
-                  alt="img"
-                />
-                <p>{el.title}</p>
-              </Box>
-              <Box sx={{ width: "200px" }}>${el.price}</Box>
-              <Box
-                sx={{
-                  width: "200px",
-                  display: "flex",
-                  justifyContent: "center",
-                }}
-              >
-                <input
-                  style={{ width: "60px" }}
-                  type="number"
-                  value={el.quantity}
-                  onChange={(e) => handleQuantityChange(el.id, parseInt(e.target.value))}
-                />
-              </Box>
-              <Box sx={{ width: "200px" }}>${el.price * el.quantity}</Box>
+          {items?.map(el => (
+            <Box key={el?.id} sx={{ padding:'39px 40px', marginBottom:"24px", display: "flex",  justifyContent:"space-between" , alignItems:"center",  boxShadow: "0px 1px 13px 0px #0000000D"}}>
+            <Box sx={{ width: "400px", display:"flex", gap:'20px', position:"relative", alignItems:"center"}}>
+              <IconButton sx={{position:'absolute', top:"-20px", left:'-20px',
+                '&:hover': {
+                  backgroundColor: "transparent"
+                }
+              }} onClick={() =>handleRemoveItem(el.id)}>
+                <TiDelete />
+              </IconButton>
+              <img width={"54px"} src={el?.images[0].replaceAll('["', "")} alt="img" />
+              <p style={{width:'166px'}}>{el?.title}</p>
             </Box>
+            <Box sx={{ width: "200px" }}>$ {el?.price}</Box>
+            <Box sx={{ width: "200px", display:"flex", justifyContent:"center" }}>
+              <input style={{width:'60px'}} type="number" value={el.quantity} />
+            </Box>
+            <Box sx={{ width: "200px" }}> {items.reduce((prev, next) => next.id === el.id ? prev + (next.price * next.quantity) : prev, 0)}</Box>
+          </Box>
           ))}
 
-          <Box
-            sx={{
-              mb: "80px",
-              display: "flex",
-              justifyContent: "space-between",
-              mt: "40px",
-            }}
-          >
-            <Button
-              LinkComponent={Link}
-              to="/"
-              sx={{
-                border: "1px solid black",
-                color: "black",
-                "&:hover": {
-                  border: "1px solid black",
-                },
-              }}
-              variant="outlined"
-            >
-              Return to Shop
-            </Button>
-            <Button
-              sx={{
-                border: "1px solid black",
-                color: "black",
-                "&:hover": {
-                  border: "1px solid black",
-                },
-              }}
-              variant="outlined"
-            >
-              Update Cart
-            </Button>
+          
+
+          <Box sx={{display:'flex', justifyContent:"space-between"}}>
+            <Button component={Link} to="/" variant="outlined"  sx={{padding:'16px 48px',  color:'#000', border:'1px solid black', borderRadius:'4px', '&:hover': {
+              border:'1px solid black'
+                }}}>Return to Shop</Button>
+            <Button variant="outlined"  sx={{padding:'16px 48px', color:'#000', border:'1px solid black', borderRadius:'4px', '&:hover': {
+              border:'1px solid black'
+                }}}>Update to Cart</Button>
           </Box>
         </Box>
-        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Box>
-            <input
-              style={{
-                border: "1px solid black",
-                padding: "5px",
-                borderRadius: "5px",
-                fontSize: "16px",
-              }}
-              type="text"
-              placeholder="Coupon Code"
-            />
 
-            <Button
-              sx={{
-                color: "#fff",
-                fontSize: "16px",
-                background: "rgba(219, 68, 68, 1)",
-                padding: "5px 15px",
-                marginLeft: "16px",
-                "&:hover": {
-                  color: "#fff",
-                  fontSize: "16px",
-                  background: "rgba(219, 68, 68, 1)",
-                },
-              }}
-            >
-              Apply Coupon
-            </Button>
+        <Box sx={{display:'flex', justifyContent:"space-between", marginTop:"80px"}}>
+          <Box sx={{display:'flex', gap:'16px'}}>
+           <div style={{width:'300px', height:'56px', border:'1px solid #000', borderRadius:"4px", padding:"16px 5px 16px 24px  "}}> <input style={{width:'100%', outline:"none", }} type="text" placeholder="coupon code"/></div>
+            <div><Button variant="outlined" sx={{padding:'16px 48px', background:'#DB4444', color:'#fff', border:'none', borderRadius:'4px', '&:hover': {
+                  backgroundColor: "#DB4444",
+                  border: "none"
+                }}}>Apply coupon</Button></div>
           </Box>
-          <Box
-            maxWidth={470}
-            sx={{
-              width: "470px",
-              border: "1px solid black",
-              padding: "32px 24px",
-            }}
-          >
-            <h3
-              style={{
-                fontSize: "20px",
-                color: "black",
-                fontWeight: "500",
-              }}
-            >
-              Cart Total
-            </h3>
-            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-              <p
-                style={{
-                  fontSize: "16px",
-                  color: "black",
-                  fontWeight: "400",
-                }}
-              >
-                Shipping
-              </p>
-              <p
-                style={{
-                  fontSize: "16px",
-                  color: "black",
-                  fontWeight: "400",
-                }}
-              >
-                Free
-              </p>
+          <Box width={"470px"} sx={{border:'1px solid #000', padding:'32px 24px'}}>
+            <h3 style={{fontWeight:'500', fontSize:'20px', marginBottom:'24px'}}>Cart Total</h3>
+            <Box sx={{display:"flex", justifyContent:"space-between", paddingBottom:'16px', borderBottom:'1px solid #909090'}}>
+              <p>Shipping</p>
+              <p>free</p>
             </Box>
-
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                borderTop: "1px solid black",
-                padding: "15px 0",
-                margin: "15px 0",
-              }}
-            >
-              <p>Total</p>
-              <p>{total}</p>
-            </Box>
-            <Button
-              sx={{
-                color: "#fff",
-                fontSize: "16px",
-                background: "rgba(219, 68, 68, 1)",
-                padding: "5px 15px",
-                marginLeft: "16px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                margin: "16px auto",
-                "&:hover": {
-                  color: "#fff",
-                  background: "rgba(219, 68, 68, 1)",
-                },
-              }}
-            >
-              Process to checkout
-            </Button>
+            <Box sx={{display:"flex", justifyContent:"space-between", padding:'16px 0', borderBottom:'1px solid #909090'}}>
+            <p>Total:</p>
+            <p>{total}</p>
+            </Box >
+           <Box sx={{display:'flex', justifyContent:'center', marginTop:'16px'}}>
+           <Button component={Link} to="/checkOut" variant="outlined" sx={{padding:'16px 48px', background:'#DB4444', color:'#fff !important', border:'none', borderRadius:'4px', '&:hover': {
+                  backgroundColor: "#DB4444",
+                  border:'none'
+                }}}>Procees to checkout</Button>
+           </Box>
           </Box>
         </Box>
       </Container>

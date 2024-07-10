@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SideImage from "../../assets/SideImage.png";
+import SideImage from "../../assets/Side-Image.png";
 
 const profile = "https://api.escuelajs.co/api/v1/auth/profile";
 const login = "https://api.escuelajs.co/api/v1/auth/login";

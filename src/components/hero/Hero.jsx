@@ -1,5 +1,3 @@
-
-
 import {
   Box,
   Container,
@@ -8,38 +6,36 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
-import React from "react";
 import { useEffect, useState } from "react";
 import storeService from "../../api/service";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { FaArrowRight } from "react-icons/fa6";
-import apple_icon from "../../assets/logo.png";
-import Iphone from "../../assets/iphone.png";
+import apple_icon from "../../assets/apple_icon.svg";
 import { useDispatch } from "react-redux";
-import { fetchProductsByCategory } from "../../redux/slice/productsSlice";
+import { fetchProductsByCategory } from "../../redux/slices/productsSlice";
 
 const fakeData = [
   {
     title: "iPhone 14 Series",
     sale: "Up to 10% off Voucher",
-    image: "",
+    image: "https://applefun.com.ua/upload/2023-10/iPhone-15-release-date-price-specs-and-must-know-features1696340204.jpeg"
   },
   {
     title: "iPhone 15 Series",
     sale: "Up to 15% off Voucher",
-    image: "",
+    image: "https://www.discountsforteachers.co.uk/blog/wp-content/uploads/2022/09/hero_iphone_14_pro__kzr001ge0262_large-1024x851.jpg",
   },
   {
     title: "iPhone 15 Pro Series",
     sale: "Up to 20% off Voucher",
-    image: "",
+    image: "https://1734811051.rsc.cdn77.org/data/thumbs/full/436046/820/0/0/0/iphone-15-pro.jpg"
   },
   {
     title: "iPhone 15 Pro Max Series",
     sale: "Up to 25% off Voucher",
-    image: "",
+    image: "https://maxmobiles.ru/images/companies/1/Product/iPhone/iPhone%2015%20Pro%20Max/54.jpg?1694596046073"
   },
 ];
 
@@ -58,16 +54,17 @@ const Hero = () => {
     const getCategories = async () => {
       const { data } = await storeService.getAllCategories();
       console.log(data, "---data---");
-      setCategories(data.slice(0,8));
-      dispatch(fetchProductsByCategory({ id: data[0]?.id,name:data[0]?.name}));
-    }
-// dispatch(fetch....());
+      setCategories(data.slice(0, 8));
+      dispatch(
+        fetchProductsByCategory({ id: data[0]?.id, name: data[0]?.name })
+      );
+    };
+    // dispatch(fetch....());
     getCategories();
   }, [dispatch]);
 
   const handleListItemClick = (id, name) => {
-
-    dispatch(fetchProductsByCategory({id , name}));
+    dispatch(fetchProductsByCategory({ id, name }));
   };
 
   return (
@@ -83,7 +80,7 @@ const Hero = () => {
             {categories?.map((el) => (
               <ListItem sx={{ cursor: "pointer" }} key={el.id}>
                 <ListItemText
-                  onClick={() => handleListItemClick(el.id ,el.name)}
+                  onClick={() => handleListItemClick(el.id, el.name)}
                   primary={`${el.name}`}
                 />
               </ListItem>
@@ -104,7 +101,7 @@ const Hero = () => {
               <div key={index}>
                 <Box
                   sx={{
-                    background: `url(${Iphone}) no-repeat right/contain`,
+                    background: `url(${promo.image}) no-repeat right/contain`,
                     height: "344px",
                   }}
                 >

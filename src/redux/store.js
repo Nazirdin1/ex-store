@@ -1,17 +1,13 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { productsReducer } from './slice/productsSlice';
-import { cartReducer } from './slice/CartSlice';
-import { heartReducer } from './slice/HeartSlice';
-
-
-
+import { configureStore } from "@reduxjs/toolkit";
+import { productsReducer } from "./slices/productsSlice";
+import { cartReducer } from "./slices/cartSlice";
+import { likeReducer } from "./slices/likeSlice";
 
 const store = configureStore({
   reducer: {
-   products:productsReducer,
- cart:cartReducer,
-heart:heartReducer,
-// user: userReducer,
+    products: productsReducer,
+    cart: cartReducer,
+    like: likeReducer,
   },
 });
 

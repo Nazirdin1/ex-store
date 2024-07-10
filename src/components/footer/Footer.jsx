@@ -1,6 +1,6 @@
 import React from "react";
 import { VscSend } from "react-icons/vsc";
-import QrCode from "../../assets/QrCode.png";
+import QrCode from "../../assets/Qr Code.png";
 import play from "../../assets/play.png";
 import appStore from "../../assets/appstore.png";
 import { FaInstagram, FaFacebookF } from "react-icons/fa";

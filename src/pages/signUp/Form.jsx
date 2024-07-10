@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-import SideImage from "../../assets/SideImage.png"
+import SideImage from "../../assets/Side-Image.png"
 const url = "https://api.escuelajs.co/api/v1/users/";
 
 export default function FormExample({ setIsSuccess }) {

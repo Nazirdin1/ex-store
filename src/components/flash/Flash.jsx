@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Container, Button } from "@mui/material";
 import { useSelector } from "react-redux";
@@ -59,12 +58,18 @@ const Flash = () => {
     setShowAllProducts(false);
   };
 
+  if(items.length === 0){
+    return <h3>Load....</h3>
+  }
+
   return (
     <Container maxWidth="lg" sx={{ marginTop: "100px", padding: "0 20px" }}>
-      <h2 style={ {textAlign:"center"}}> {categoryName} </h2>
+      <h2 style={{ textAlign: "center" }}>{categoryName}</h2>
       {!showAllProducts ? (
         <>
-          <div style={{ position: "absolute", right: "200px", marginTop: "-50px" }}>
+          <div
+            style={{ position: "absolute", right: "200px", marginTop: "-50px" }}
+          >
             <Button
               onClick={previousSlide}
               style={{
@@ -100,12 +105,7 @@ const Flash = () => {
           </div>
           <Slider {...sliderSettings} ref={sliderRef}>
             {items.map((el) => (
-              <Card
-                key={el?.id}
-                el={el}
-                showRating={true}
-                CartButton={false}
-              />
+              <Card key={el?.id} el={el} />
             ))}
           </Slider>
           <button
@@ -135,18 +135,8 @@ const Flash = () => {
               marginBottom: "50px",
             }}
           >
-            {items.map((el) => (
-              <Card
-              
-              key={el?.id}
-              el={el}             
-                 style={{
-                  width: "30%",
-                  margin: "10px",
-                }}
-                showRating={true}
-                CartButton={false}
-              />
+            {items?.map((el) => (
+              <Card key={el?.id} el={el} />
             ))}
           </div>
           <button

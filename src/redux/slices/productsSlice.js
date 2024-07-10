@@ -9,18 +9,20 @@ export const fetchProductsByCategory = createAsyncThunk(
     console.log(data, "---data---");
     const response = {
       data,
-      name,
-    };
+      name
+    }
     return response;
   }
 );
-export const fetchProductById=createAsyncThunk(
+
+export const fetchProductById = createAsyncThunk(
   "products/fetchProductById",
-  async(id)=>{
-    const {data}=await service.getProductById(id)
-    return data;
+  async (id) => {
+    const {data} = await service.getProductById(id)
+    return data
   }
 )
+
 const productsSlice = createSlice({
   name: "products",
   initialState: {
@@ -35,20 +37,21 @@ const productsSlice = createSlice({
     builder
       .addCase(fetchProductsByCategory.pending, (state) => {
         state.isLoading = "Loading...";
+        
       })
       .addCase(fetchProductsByCategory.fulfilled, (state, action) => {
         state.isLoading = "Success";
         state.items = action.payload.data;
         state.categoryName = action.payload.name;
       })
-      .addCase(fetchProductsByCategory.rejected, (state, action) => {
+      .addCase(fetchProductsByCategory.rejected, (state,action) => {
         state.isLoading = "Failed";
         state.isError = action.payload;
       })
-      .addCase(fetchProductById.fulfilled, (state, {payload} )=> {
-        state.item=payload;
-      } )
-  },
+      .addCase(fetchProductById.fulfilled, (state, {payload}) => {
+        state.item = payload
+      })
+  }
 });
 
 export const productsReducer = productsSlice.reducer;
