@@ -7,7 +7,10 @@ class StoreService {
   getCategoryById(id) {
     return axios.get(`/categories/${id}/products`);
   }
-  getAllUsers() {}
+  getProductById(id){
+    return axios.get(`products/${id}`);
+  }
+
 }
 
 export default new StoreService();

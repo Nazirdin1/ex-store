@@ -14,11 +14,18 @@ export const fetchProductsByCategory = createAsyncThunk(
     return response;
   }
 );
-
+export const fetchProductById=createAsyncThunk(
+  "products/fetchProductById",
+  async(id)=>{
+    const {data}=await service.getProductById(id)
+    return data;
+  }
+)
 const productsSlice = createSlice({
   name: "products",
   initialState: {
     items: [],
+    item: {},
     categoryName:"",
     isError: "",
     isLoading: "",
@@ -37,7 +44,10 @@ const productsSlice = createSlice({
       .addCase(fetchProductsByCategory.rejected, (state, action) => {
         state.isLoading = "Failed";
         state.isError = action.payload;
-      });
+      })
+      .addCase(fetchProductById.fulfilled, (state, {payload} )=> {
+        state.item=payload;
+      } )
   },
 });
 

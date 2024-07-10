@@ -6,7 +6,8 @@ import Cart from "../pages/cart/Cart";
 import Heart from "../pages/heart/Heart";
 import About from "../pages/about/About";
 import Contact from "../pages/contact/Contact";
-import CartTwo from "../pages/cart/CartTwo";
+
+import Detail from "../pages/detail/Detail";
 
 const menu = [
     {
@@ -40,9 +41,9 @@ const menu = [
         component:Heart
     },
     {
-        path: "/cartTwo",
-        name: "CartTwo",
-        component:CartTwo
+        path: "/detail/:id",
+        name: "Detail",
+        component:Detail
     }
 ];
 

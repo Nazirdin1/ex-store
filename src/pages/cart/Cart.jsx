@@ -301,12 +301,12 @@ const Cart = () => {
                 >
                   <TiDelete />
                 </IconButton>
-                <Link to="/cartTwo">
+                
                 <img
                   width={"54px"}
                   src={el?.images[0].replaceAll('["', "")}
                   alt="img"
-                /></Link>
+                />
                 <p>{el.title}</p>
               </Box>
               <Box sx={{ width: "200px" }}>${el.price}</Box>
