@@ -8,7 +8,10 @@ import Favorite from "../pages/favorite/Favorite";
 import Contact from "../pages/contact/Contact";
 import About from "../pages/About";
 import NotFoundPage from "../pages/not-found-page/NotFounPage";
-import SignUp from "../pages/signUp/SignUp";
+
+import FormExample from "../pages/signUp/Form";
+import LoginExample from "../pages/signUp/Login";
+import Profile1 from "../components/profile1/Profile1";
 
 const menu = [
     {
@@ -17,9 +20,14 @@ const menu = [
         component: HomePage
     },
     {
-        path: "/signUp",
+        path: "/form",
         name: "SignUp",
-        component: SignUp
+        component: FormExample
+    },
+    {
+        path: "/login",
+        name: "Login",
+        component: LoginExample
     },
 
     {
@@ -51,6 +59,11 @@ const menu = [
         path: "/favorite",
         name: "Favorite",
         component: Favorite
+    },
+    {
+        path: "/profile",
+        name: "Profile1",
+        component: Profile1
     },
 ];
 

@@ -13,7 +13,7 @@ export const headerMenu=[
     },
     {
         name:"Sign Up",
-        path:"/signUp"
+        path:"/form"
     }
     
 ]

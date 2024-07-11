@@ -8,9 +8,10 @@ import { FiTwitter } from "react-icons/fi";
 
 import { FaLinkedinIn } from "react-icons/fa6";
 import { Container } from "@mui/material";
+import { NavLink } from "react-router-dom";
 const Footer = () => {
   return (
-    <div className="w-100% bg-black p-12 mt-20">
+    <div className="w-100% bg-black p-12 mt-20 ">
       <Container maxWidth="lg" sx={{p:"0px"}}>
       <div className="flex items-start  justify-around">
         <div className="">
@@ -44,11 +45,11 @@ const Footer = () => {
         </div>
         <div className="">
           <h4 className=" text-white text-2xl ">Account</h4>
-          <a className="text-white block mt-4"> My Account</a>
-          <a className="text-white block"> Login / Register</a>
-          <a className="text-white block"> Cart</a>
-          <a className="text-white block">Wishlist</a>
-          <a className="text-white block"> Shop</a>
+          <NavLink  to="/profile" className="text-white block mt-4">My Account</NavLink>
+      <NavLink to="/login" className="text-white block">Login / Register</NavLink>
+      <NavLink to="/cart" className="text-white block">Cart</NavLink>
+      <NavLink to="/favorite"className="text-white block">Wishlist</NavLink>
+      <NavLink   to="/" className="text-white block">Shop</NavLink>
         </div>
         <div className="">
           <h4 className="text-white text-2xl">Quick Link</h4>
@@ -61,9 +62,9 @@ const Footer = () => {
           <a href="" className="text-white block">
             FAQ
           </a>
-          <a href="" className="text-white block">
+          <NavLink to="/contact" className="text-white block">
             Contact
-          </a>
+          </NavLink>
         </div>
         <div className="">
           <h4 className="text-white text-2xl">Download App</h4>

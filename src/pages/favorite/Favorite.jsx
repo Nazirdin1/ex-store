@@ -1,12 +1,12 @@
 import { Box, Button, Container, Typography } from "@mui/material";
 import Card from "../../components/card/Card";
 import { useDispatch, useSelector } from "react-redux";
-import {addItem} from "../../redux/slices/cartSlice"
+import { addItem } from "../../redux/slices/cartSlice";
 import { useEffect } from "react";
 
 const Favorite = () => {
   const { items } = useSelector((state) => state.like);
-  const dispatсh = useDispatch()
+  const dispatch = useDispatch(); // Corrected spelling of dispatch
 
   if (items.length === 0) {
     return (
@@ -18,10 +18,9 @@ const Favorite = () => {
 
   const moveAllToBag = () => {
     items.forEach((item) => {
-      dispatсh(addItem(item));
+      dispatch(addItem(item));
     });
   };
-
 
   return (
     <div>
@@ -29,11 +28,11 @@ const Favorite = () => {
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           <Typography variant="h5">WishList({items.length})</Typography>
           <Button onClick={moveAllToBag} variant="contained" sx={{ bgcolor: "red", color: "#fff" }}>
-            Move All To Bag{" "}
+            Move All To Bag
           </Button>
         </Box>
 
-        <Box sx={{ display: "flex", gap: "20px" }}>
+        <Box sx={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
           {items.map((el) => (
             <Card key={el.id} el={el} />
           ))}

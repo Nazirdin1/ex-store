@@ -3,9 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const likeSlice = createSlice({
   name: "like",
   initialState: {
-    items: [],
+    items: JSON.parse(localStorage.getItem("likedItems")) || [],
   },
-
   reducers: {
     addToLike: (state, { payload }) => {
       const hasInItems = state.items.find((el) => el.id === payload.id);
@@ -19,14 +18,18 @@ const likeSlice = createSlice({
         quantity: 1,
       };
       state.items.push(item);
+      saveToLocal(state.items);
     },
     removeFromLike: (state, { payload }) => {
-    //   const item = state.items.find((el) => el.id === payload.id);
-    //   item.isLike = false;
       state.items = state.items.filter((item) => item.id !== payload.id);
+      saveToLocal(state.items);
     },
   },
 });
 
 export const { addToLike, removeFromLike } = likeSlice.actions;
 export const likeReducer = likeSlice.reducer;
+
+function saveToLocal(items) {
+  localStorage.setItem("likedItems", JSON.stringify(items));
+}

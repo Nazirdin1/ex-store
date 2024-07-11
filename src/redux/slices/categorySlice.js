@@ -1,36 +1,39 @@
-import {createSlice, createAsyncThunk} from "@reduxjs/toolkit"
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import service from "../../api/service";
 
-import service from "../../api/service"
+// Async thunk
+export const fetchProducts = createAsyncThunk(
+  "products/fetchProducts",
+  async () => {
+    const { data } = await service.getAllProducts(); // Assuming getAllProducts() fetches all products
+    console.log(data, "---all products data---");
+    return data;
+  }
+);
 
-export const fetchGetCategories = createAsyncThunk("category/fetchGetCategories",
-    async () =>{
-        const {data} = await service.getAllCategories()
-        console.log(data,'---category---');
-        return data
-    }
-)
+// Products slice
+const productsSlice = createSlice({
+  name: "products",
+  initialState: {
+    items: [],
+    isError: "",
+    isLoading: "",
+  },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchProducts.pending, (state) => {
+        state.isLoading = "Loading...";
+      })
+      .addCase(fetchProducts.fulfilled, (state, action) => {
+        state.isLoading = "Success";
+        state.items = action.payload;
+      })
+      .addCase(fetchProducts.rejected, (state, action) => {
+        state.isLoading = "Failed";
+        state.isError = action.payload;
+      });
+  },
+});
 
-
-const categorySlice = createSlice({
-    name: "category",
-    initialState: {
-        categories: [],
-        isError:"",
-        isLoading:false
-    },
-    extraReducers: (builder) => { 
-        builder.addCase(fetchGetCategories.pending, (state) =>{ 
-            state.isLoading = true
-            })
-            builder.addCase(fetchGetCategories.fulfilled, (state, action) =>{
-                state.isLoading = false;
-                state.categories = action.payload
-             })
-            builder.addCase(fetchGetCategories.rejected, (state, action)=>{ 
-                state.isLoading = false
-                state.isError = action.payload
-            })
-    }
-})
-
-export const categoryReducer = categorySlice.reducer
+export const productsReducer = productsSlice.reducer;

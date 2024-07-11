@@ -1,44 +1,45 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const initialState = {
+  items: [],
+};
+
 const cartSlice = createSlice({
   name: "cart",
-  initialState: {
-    items: [],
-  },
+  initialState,
   reducers: {
-    addItem(state, {payload}) {
-      let hasInCart = state.items.find(el => el?.id === payload.id)
-      if(hasInCart){
-        hasInCart.quantity += 1;
-        saveToLocal(state.items)
-        return;
+    addItem(state, action) {
+      const { id } = action.payload;
+      const existingItem = state.items.find((item) => item.id === id);
+      if (existingItem) {
+        existingItem.quantity++;
+      } else {
+        state.items.push({ ...action.payload, quantity: 1 });
       }
-      const product = {
-        ...payload,
-        quantity: 1
-
+      saveToLocal(state.items);
+    },
+    removeItem(state, action) {
+      state.items = state.items.filter((item) => item.id !== action.payload.id);
+      saveToLocal(state.items);
+    },
+    updateQuantity(state, action) {
+      const { id, quantity } = action.payload;
+      const itemToUpdate = state.items.find((item) => item.id === id);
+      if (itemToUpdate) {
+        itemToUpdate.quantity = quantity;
+        saveToLocal(state.items);
       }
-        state.items = [...state.items, product];
-        saveToLocal(state.items)
     },
-    removeItem(state, {payload}) {
-       state.items = state.items.filter(item => item.id !== payload.id)
-       saveToLocal(state.items)
+    updateCart(state) {
+      const items = localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : [];
+      state.items = items;
     },
-    updateCart:( state) => {
-      // ?? null undefined
-      const items = localStorage.getItem('cart25') ?? []
-      state.items = JSON.parse(items)
-    }
   },
 });
 
-export const {addItem, removeItem, updateCart} = cartSlice.actions
+export const { addItem, removeItem, updateQuantity, updateCart } = cartSlice.actions;
 export const cartReducer = cartSlice.reducer;
 
-
-
-
-function  saveToLocal (arr) {
-  localStorage.setItem("cart25", JSON.stringify(arr))
+function saveToLocal(items) {
+  localStorage.setItem("cart", JSON.stringify(items));
 }

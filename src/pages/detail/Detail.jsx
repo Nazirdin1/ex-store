@@ -10,16 +10,18 @@ import {
   Typography,
 } from "@mui/material";
 import { fetchProductById } from "../../redux/slices/productsSlice";
-import { FaMinus, FaPlus } from "react-icons/fa6";
-import {addToLike} from "../../redux/slices/likeSlice"
+import { addToLike } from "../../redux/slices/likeSlice";
+import { FaMinus, FaPlus } from "react-icons/fa";
 import { FaStar, FaStarHalfAlt, FaRegHeart } from "react-icons/fa";
+
 const Detail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const { item } = useSelector((state) => state.products);
-  const [cardImg, setCardIimg] = useState("");
+  const [cardImg, setCardImg] = useState("");
   const [activeSize, setActiveSize] = useState("");
-  const [circle, setCircle] = useState("")
+  const [circle, setCircle] = useState("");
+  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     dispatch(fetchProductById(id));
@@ -27,16 +29,31 @@ const Detail = () => {
 
   useEffect(() => {
     if (item.images && item.images.length > 0) {
-      setCardIimg(item.images[0]);
+      setCardImg(item.images[0]);
     }
   }, [item]);
 
   if (Object.keys(item).length === 0) {
-    return <h3>loading...</h3>;
+    return <h3>Загрузка...</h3>;
   }
 
   const { title, images, price, description } = item;
   const randomRating = Math.floor(Math.random() * 100) + 1;
+
+  const handleQuantityChange = (e) => {
+    setQuantity(e.target.value);
+  };
+
+  const decrementQuantity = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+
+  const incrementQuantity = () => {
+    setQuantity(quantity + 1);
+  };
+
   return (
     <div>
       <Container
@@ -44,13 +61,11 @@ const Detail = () => {
         sx={{ display: "flex", justifyContent: "space-between", pt: "180px" }}
       >
         <Box sx={{ display: "flex", gap: "20px" }}>
-          <div
-            style={{ display: "flex", flexDirection: "column", gap: "30px" }}
-          >
+          <div style={{ display: "flex", flexDirection: "column", gap: "30px" }}>
             {images.map((imgUrl) => (
               <img
                 onClick={() => {
-                  setCardIimg(imgUrl);
+                  setCardImg(imgUrl);
                 }}
                 key={imgUrl}
                 width={146}
@@ -100,9 +115,10 @@ const Detail = () => {
             variant="body"
             component={"p"}
           >
-            Colors:{" "}
+            Цвета:{" "}
             {["#A0BCE0", "#E07575"].map((color) => (
-              <span onClick={() => setCircle(color)}
+              <span
+                onClick={() => setCircle(color)}
                 key={color}
                 style={{
                   display: "inline-block",
@@ -111,7 +127,7 @@ const Detail = () => {
                   borderRadius: "50%",
                   backgroundColor: color,
                   marginLeft: "10px",
-                  border: circle === color ? "2px solid black" : "none"
+                  border: circle === color ? "2px solid black" : "none",
                 }}
               ></span>
             ))}
@@ -122,7 +138,7 @@ const Detail = () => {
             variant="body"
             component={"p"}
           >
-            Size:{" "}
+            Размеры:{" "}
             {["SX", "S", "M", "L", "XL"].map((size) => (
               <span
                 onClick={() => setActiveSize(size)}
@@ -156,12 +172,13 @@ const Detail = () => {
                 border: "1px solid red",
               }}
             >
-              <IconButton>
+              <IconButton onClick={decrementQuantity}>
                 <FaMinus />
               </IconButton>
               <input
                 type="text"
-                value={1}
+                value={quantity}
+                onChange={handleQuantityChange}
                 style={{
                   minWidth: "5px",
                   textAlign: "center",
@@ -170,7 +187,7 @@ const Detail = () => {
                   height: "40px",
                 }}
               />
-              <IconButton>
+              <IconButton onClick={incrementQuantity}>
                 <FaPlus />
               </IconButton>
             </Box>
@@ -182,11 +199,12 @@ const Detail = () => {
                 color: "#fff",
               }}
             >
-              Buy Now
+              Купить сейчас
             </Button>
-            <IconButton onClick={() => {
-              dispatch(addToLike(item))
-            }}
+            <IconButton
+              onClick={() => {
+                dispatch(addToLike(item));
+              }}
               sx={{
                 border: "1px solid red",
                 borderRadius: "5px",
@@ -194,7 +212,7 @@ const Detail = () => {
                 padding: "8px",
               }}
             >
-              <FaRegHeart /> 
+              <FaRegHeart />
             </IconButton>
           </Box>
         </Box>
