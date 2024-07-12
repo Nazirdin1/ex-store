@@ -203,7 +203,7 @@ const Card = ({ el, showDiscount, showRating }) => {
               <FaStar />
               <FaStarHalfAlt />
               <b style={{ marginLeft: "20px", color: "grey" }}>
-             ({ratingValue})
+             ({ratingValue })
               </b>
             </Box>
           )}
