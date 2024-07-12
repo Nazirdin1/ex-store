@@ -105,7 +105,7 @@ const Flash = () => {
           </div>
           <Slider {...sliderSettings} ref={sliderRef}>
             {items.map((el) => (
-              <Card key={el?.id} el={el} />
+              <Card key={el?.id} el={el}  showDiscount={true} showRating={true} />
             ))}
           </Slider>
           <button
@@ -136,7 +136,7 @@ const Flash = () => {
             }}
           >
             {items?.map((el) => (
-              <Card key={el?.id} el={el} />
+              <Card key={el?.id} el={el} showDiscount={true} showRating={true} />
             ))}
           </div>
           <button

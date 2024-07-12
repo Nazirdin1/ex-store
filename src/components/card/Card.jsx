@@ -5,31 +5,32 @@ import {
   CardContent,
   Typography,
   Box,
+  Button,
 } from "@mui/material";
-import { FaRegHeart, FaStar, FaStarHalfAlt } from "react-icons/fa";
-import { useDispatch } from "react-redux"
-import { addItem } from "../../redux/slices/cartSlice"
-import { addToLike, removeFromLike } from "../../redux/slices/likeSlice"
-import { toast } from "react-toastify"
-import { RiDeleteBinLine } from "react-icons/ri";
+import { useTranslation } from 'react-i18next';
 
+import { FaRegHeart, FaStar, FaStarHalfAlt } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { addItem } from "../../redux/slices/cartSlice";
+import { addToLike, removeFromLike } from "../../redux/slices/likeSlice";
+import { toast } from "react-toastify";
+import { RiDeleteBinLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 
 const def_Img = "https://mui.com/static/images/cards/paella.jpg";
 
-const Card = ({ el }) => {
+const Card = ({ el, showDiscount, showRating }) => {
   const { title, images, price, id } = el;
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-  const discount = 30; // скидки
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const discount = 30; // скидка
   const discountPrice = price - (price * discount) / 100;
   const randomRating = Math.floor(Math.random() * 100) + 1;
 
-
-
   const handleClick = (id) => {
-    navigate(`/detail/${id}`)
-  }
+    navigate(`/detail/${id}`);
+  };
+  const { t } = useTranslation();
   return (
     <MuiCard
       className="Cart"
@@ -47,25 +48,28 @@ const Card = ({ el }) => {
           width: "calc(95%)",
         }}
       >
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            color: "white",
-            backgroundColor: "red",
-            borderRadius: "5px",
-            padding: "2px 6px",
-            height: "25px",
-          }}
-        >
-          -30%
-        </Box>
+        {showDiscount && (
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              color: "white",
+              backgroundColor: "red",
+              borderRadius: "5px",
+              padding: "2px 6px",
+              height: "25px",
+            }}
+          >
+            -30%
+          </Box>
+        )}
         {el?.isLike ? (
-          <Box onClick={() => {
-            dispatch(removeFromLike(el))
-            toast.error("item removed from favorite")
-          }}
+          <Box
+            onClick={() => {
+              dispatch(removeFromLike(el));
+              toast.error("Item removed from favorite");
+            }}
             sx={{
               display: "flex",
               alignItems: "center",
@@ -76,16 +80,17 @@ const Card = ({ el }) => {
               width: "40px",
               height: "40px",
               marginTop: "8px",
-              cursor: 'pointer'
+              cursor: "pointer",
             }}
           >
             <RiDeleteBinLine />
           </Box>
         ) : (
-          <Box onClick={() => {
-            dispatch(addToLike(el))
-            toast.success("item added to favorite")
-          }}
+          <Box
+            onClick={() => {
+              dispatch(addToLike(el));
+              toast.success("Item added to favorite");
+            }}
             sx={{
               display: "flex",
               alignItems: "center",
@@ -96,22 +101,30 @@ const Card = ({ el }) => {
               width: "40px",
               height: "40px",
               marginTop: "8px",
-              cursor: 'pointer'
+              cursor: "pointer",
             }}
           >
             <FaRegHeart />
           </Box>
         )}
       </Box>
-      <CardMedia
+      {/* <CardMedia
         component="img"
         height="250"
         width="270"
-        image={images[0]?.length > 0 ? images[0]?.replaceAll('["', '') : def_Img}
+        image={images[0]?.length > 0 ? images[0].replace(/["]/, '') : def_Img}
         alt={title}
         sx={{ zIndex: 1 }}
-      />
-      <button
+      /> */}
+      <CardMedia
+  component="img"
+  height="250 "
+  width="270"
+  image={images.length > 0 ? images[0].replace(/[\["\]]/g, '') : def_Img}
+  alt={title}
+  sx={{ zIndex: 1 }}
+/>
+     <button
         className="btnCart"
         onClick={() => {
           dispatch(addItem(el))
@@ -130,46 +143,10 @@ const Card = ({ el }) => {
           marginTop: "-50px",
         }}
       >
-        Add To Cart
+        {t('Add To Cart')}
       </button>
-      <CardContent onClick={() => { handleClick(id) }}>
-        {el?.isLike ? (
-          <Typography variant="subtitle1" component="div">
-            <Box
-              sx={{
-                fontSize: "16px",
-                color: "black",
-                fontWeight: "500",
-                margin: 0,
-                lineHeight: "1.2em",
-                minHeight: "2.4em",
-                display: "-webkit-box",
-                WebkitLineClamp: 2,
-                WebkitBoxOrient: "vertical",
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-              }}
-            >
-              {title}
-            </Box>
-
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                marginTop: "8px",
-              }}
-            >
-              <Box sx={{ color: "red", marginRight: "8px" }}>
-                <b>${discountPrice.toFixed(2)}</b>
-              </Box>
-              <Box sx={{ textDecoration: "line-through", color: "grey" }}>
-                <b>${price}</b>
-              </Box>
-            </Box>
-          </Typography>
-        ) : (<Typography variant="subtitle1" component="div">
+      <CardContent onClick={() => handleClick(id)}>
+        <Typography variant="subtitle1" component="div">
           <Box
             sx={{
               fontSize: "16px",
@@ -196,30 +173,34 @@ const Card = ({ el }) => {
               marginTop: "8px",
             }}
           >
-            <Box sx={{ color: "red", marginRight: "8px" }}>
-              <b>${discountPrice.toFixed(2)}</b>
-            </Box>
-            <Box sx={{ textDecoration: "line-through", color: "grey" }}>
+            {showDiscount && (
+              <Box sx={{ color: "red", marginRight: "8px" }}>
+                <b>${discountPrice.toFixed(2)}</b>
+              </Box>
+            )}
+            <Box sx={{ textDecoration: showDiscount ? "line-through" : "none", color: "grey" }}>
               <b>${price}</b>
             </Box>
           </Box>
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              color: "rgba(255, 173, 51, 1)",
-            }}
-          >
-            <FaStar />
-            <FaStar />
-            <FaStar />
-            <FaStar />
-            <FaStarHalfAlt />
-            <b style={{ marginLeft: "20px", color: "grey" }}>
-              ({3 * randomRating})
-            </b>
-          </Box>
-        </Typography>)}
+          {showRating && (
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                color: "rgba(255, 173, 51, 1)",
+              }}
+            >
+              <FaStar />
+              <FaStar />
+              <FaStar />
+              <FaStar />
+              <FaStarHalfAlt />
+              <b style={{ marginLeft: "20px", color: "grey" }}>
+                ({3 * randomRating})
+              </b>
+            </Box>
+          )}
+        </Typography>
       </CardContent>
     </MuiCard>
   );

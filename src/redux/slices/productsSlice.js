@@ -15,7 +15,7 @@ export const fetchProductById = createAsyncThunk(
   "products/fetchProductById",
   async (id) => {
     const { data } = await service.getProductById(id);
-    console.log(data, "---product data---");
+    console.log(data, "---product data 111---");
     return data;
   }
 );
@@ -49,6 +49,8 @@ const productsSlice = createSlice({
         state.isLoading = "Loading...";
       })
       .addCase(fetchProductById.fulfilled, (state, action) => {
+
+        console.log(action, '--action 1 pro');
         state.isLoading = "Success";
         state.item = action.payload;
       })

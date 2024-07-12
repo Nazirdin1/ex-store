@@ -18,6 +18,7 @@ const Detail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const { item } = useSelector((state) => state.products);
+  console.log(item,'----item----');
   const [cardImg, setCardImg] = useState("");
   const [activeSize, setActiveSize] = useState("");
   const [circle, setCircle] = useState("");

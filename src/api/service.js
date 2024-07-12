@@ -59,6 +59,9 @@ class StoreService {
   getAllProducts() {
     return axios.get(`/products`);
   }
+  getProductById(id) {
+    return axios.get(`/products/${id}`);
+  }
 
   // Другие методы для работы с данными, если необходимо
 }

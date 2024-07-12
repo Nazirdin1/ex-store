@@ -6,6 +6,7 @@ import CategoriesSection from '../CategoriesSection/CategoriesSection'
 
 import Experience from '../../components/Experience/Experience'
 import Best from '../../components/Best/Best'
+import BestTwo from '../../components/Best/BestTwo'
 
 const HomePage = () => {
   return (
@@ -16,6 +17,7 @@ const HomePage = () => {
       <CategoriesSection/>
      <Best/>
       <Experience/>
+      <BestTwo/>
     </div>
   )
 }

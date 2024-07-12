@@ -65,7 +65,8 @@ const Experience = () => {
                 padding: "60px",
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "space-between"
+                justifyContent: "space-between",
+                flexWrap:"wrap"
             }}>
                 <div>
                     <b style={{
