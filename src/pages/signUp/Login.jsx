@@ -1,13 +1,42 @@
-const login ="https://api.escuelajs.co/api/v1/auth/login"
+const login = "https://api.escuelajs.co/api/v1/auth/login"
+const profile = "https://api.escuelajs.co/api/v1/auth/profile"
 import { Link } from "react-router-dom"
 import SideImage from "../../assets/sign-up-fon.png"
-
-
-
 export default function LoginExample(props) {
-  const { setIsSuccess }=props
+  const { setIsSuccess, setUser } = props
+
+  const handleSubmit = async (evt) => {
+    evt.preventDefault()
+    const form = evt.target
+    const formData = new FormData(form)
+    let data = {}
+    for (const [key, value] of formData) {
+      data[key] = value
+    }
+    console.log(data, '----data----');
+    const req = await fetch(login, {
+      method: "POST",
+      headers: {
+        "Content-Type" : "application/json"
+      },
+      body: JSON.stringify(data)
+    })
+    const res = await req.json()
+    console.log(res, "====token====");
+
+    const req2 = await fetch(profile, {
+      headers: {
+        Authorization: `Bearer ${res.access_token}`
+      }
+    })
+    const userData = await req2.json()
+    console.log(userData, '-----profile-----');
+    setUser(userData)
+  }
+
     return (
       <>
+       
        <div className="container  m-auto flex">
       <img src={SideImage} alt="Side Image" />
 
@@ -22,7 +51,7 @@ export default function LoginExample(props) {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            <form className="space-y-6" action="#" method="POST">
+        <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
                 <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                   Email address
