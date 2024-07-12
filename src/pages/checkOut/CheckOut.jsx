@@ -4,6 +4,11 @@ import { TiDelete } from "react-icons/ti";
 import { useDispatch, useSelector } from "react-redux";
 import { updateCart, removeItem } from "../../redux/slices/cartSlice";
 
+import Bcash from "../../assets/Bkash.svg"
+import Visa from "../../assets/Visa.svg"
+import MasterCard from "../../assets/Mastercard.svg"
+import Nagad from "../../assets/Nagad.svg"
+
 const inputs = [
   {
     name: "First Name*",
@@ -39,7 +44,7 @@ const CheckOut = () => {
 
   return (
     <div>
-      <Container maxWidth="lg" sx={{display:'flex', justifyContent:"space-between", alignItems:"center"}}>
+      <Container maxWidth="lg" sx={{display:'flex', justifyContent:"space-between", alignItems:"center", marginTop:"180px"}}>
         <Box width={470}>
           <h1
             style={{
@@ -123,6 +128,18 @@ const CheckOut = () => {
             <p>Total: </p>
             <p>{total}</p>
             </Box >
+            <Box sx={{ display: "flex", justifyContent: "space-between", marginTop: "32px" }}>
+             <div style={{display:"flex", alignItems:"center", gap:"16px"}}><input type="radio" /> <p>Bank</p><br /></div>
+              <div style={{ display: "flex", gap: "8px" }}>
+                <img src={Bcash} alt="" />
+                <img src={Visa} alt="" />
+                <img src={MasterCard} alt="" />
+                <img src={Nagad} alt="" />
+              </div>
+            </Box>
+            <Box display={"flex"} gap={"16px"}>
+             <input type="radio" name="" id="" /> <p style={{ }}>Cash on delivery</p>
+            </Box>
             </Box>
             <Box sx={{display:'flex', gap:'16px'}}>
            <div style={{width:'300px', height:'56px', border:'1px solid #000', borderRadius:"4px", padding:"16px 5px 16px 24px  "}}> <input style={{width:'100%', outline:"none", }} type="text" placeholder="coupon code"/></div>
