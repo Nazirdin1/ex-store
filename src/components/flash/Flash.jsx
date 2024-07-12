@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Button } from "@mui/material";
+import { Container, Button, Grid } from "@mui/material";
 import { useSelector } from "react-redux";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -64,15 +64,16 @@ const Flash = () => {
 
   return (
     <Container maxWidth="lg" sx={{ marginTop: "100px", padding: "0 20px" }}>
-      <h2 style={{ textAlign: "center" }}>{categoryName}</h2>
+     
       {!showAllProducts ? (
         <>
-          <div
-            style={{ position: "absolute", right: "200px", marginTop: "-50px" }}
-          >
-            <Button
-              onClick={previousSlide}
-              style={{
+           <Grid container alignItems="center" justifyContent="space-between" position="relative">
+        <Grid item>
+          <h2 style={{ textAlign: "center", marginBottom: 0 }}>{categoryName}</h2>
+        </Grid>
+        <Grid item>
+          <Button  
+           style={{
                 padding: "0",
                 minWidth: "auto",
                 margin: "0 10px",
@@ -83,12 +84,11 @@ const Flash = () => {
                 color: "black",
                 fontSize: "22px",
               }}
-            >
-              <GoArrowLeft />
-            </Button>
-            <Button
-              onClick={nextSlide}
-              style={{
+          onClick={previousSlide} className="nav-button">
+            <GoArrowLeft />
+          </Button>
+          <Button  
+           style={{
                 padding: "0",
                 minWidth: "auto",
                 margin: "0 10px",
@@ -99,10 +99,11 @@ const Flash = () => {
                 color: "black",
                 fontSize: "22px",
               }}
-            >
-              <GoArrowRight />
-            </Button>
-          </div>
+          onClick={nextSlide} className="nav-button">
+            <GoArrowRight />
+          </Button>
+        </Grid>
+      </Grid>
           <Slider {...sliderSettings} ref={sliderRef}>
             {items.map((el) => (
               <Card key={el?.id} el={el}  showDiscount={true} showRating={true} />

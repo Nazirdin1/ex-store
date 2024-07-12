@@ -7,12 +7,7 @@ import {
   Box,
   Button,
 } from "@mui/material";
-import { FaRegHeart, FaStar, FaStarHalfAlt } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux"
-import { addItem } from "../../redux/slices/cartSlice"
-import { addToLike, removeFromLike } from "../../redux/slices/likeSlice"
-import { toast } from "react-toastify"
-import { RiDeleteBinLine } from "react-icons/ri";
+import { useTranslation } from 'react-i18next';
 
 import { FaRegHeart, FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { useDispatch } from "react-redux";
@@ -21,16 +16,23 @@ import { addToLike, removeFromLike } from "../../redux/slices/likeSlice";
 import { toast } from "react-toastify";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
+import { useMemo } from "react";
 
 const def_Img = "https://mui.com/static/images/cards/paella.jpg";
 
-const Card = ({ el, hideBox }) => {
+const Card = ({ el, showDiscount, showRating }) => {
   const { title, images, price, id } = el;
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const discount = 30; // скидка
   const discountPrice = price - (price * discount) / 100;
-  const randomRating = Math.floor(Math.random() * 100) + 1;
+
+  // Определение randomRating с помощью useMemo
+  const randomRating = useMemo(() => Math.floor(Math.random() * 100) + 1, []);
+
+  // Сохранение вычисленного значения ratingValue с использованием useMemo
+  const ratingValue = useMemo(() => 3 * randomRating, [randomRating]);
+
 
   const handleClick = (id) => {
     navigate(`/detail/${id}`);
@@ -51,23 +53,9 @@ const Card = ({ el, hideBox }) => {
           justifyContent: "space-between",
           zIndex: 100,
           width: "calc(95%)",
-        }} 
+        }}
       >
-       
-       {el ? (<Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              color: "white",
-              backgroundColor: "red",
-              borderRadius: "5px",
-              padding: "2px 6px",
-              height: "25px",
-            }}
-          >
-            -30%
-          </Box>) : !hideBox && (
+        {showDiscount && (
           <Box
             sx={{
               display: "flex",
@@ -215,7 +203,7 @@ const Card = ({ el, hideBox }) => {
               <FaStar />
               <FaStarHalfAlt />
               <b style={{ marginLeft: "20px", color: "grey" }}>
-                ({3 * randomRating})
+             ({ratingValue})
               </b>
             </Box>
           )}
