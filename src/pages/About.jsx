@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Container, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
+import { CiShop } from "react-icons/ci";
 import SideImage from '../assets/Side-Image.png';
 
 const About = () => {
@@ -24,6 +25,36 @@ const About = () => {
 
           <div>
             <img src={SideImage} alt="Side Image" style={{ width: '100%', height: 'auto' }} />
+          </div>
+
+
+        </Box>
+        <Box>
+          <div>
+            <div style={{ position: 'relative' }}>
+              <CiShop style={{ position: 'absolute', marginLeft: '17px', marginTop: '17px', color: 'white' }} />
+              <div style={{
+                width: '50px',
+                height: '50px',
+                background: '#2F2E30',
+                borderRadius: '50%',
+              }}>
+                <div
+                  style={{
+                    width: '25px',
+                    height: '25px',
+                    background: '#000000',
+                    borderRadius: '50%',
+                    marginLeft: 13,
+                    marginTop: '12vh'
+                  }}></div>
+              </div>
+
+            </div>
+            <div>
+              <h1>10.5k</h1>
+              <p>Sallers active our site</p>
+            </div>
           </div>
         </Box>
       </Container>

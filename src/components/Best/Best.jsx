@@ -242,14 +242,14 @@ const Best = () => {
             marginBottom: '50px',
           }}
         >
-          {randomItems.slice(0, 21).map((el) => (
-            <Card key={el?.id} el={el} />
+          {randomItems.map(el => (
+            <Card key={el?.id} el={el} hideBox={false}/>
           ))}
         </div>
       ) : (
         <Slider {...sliderSettings}>
-          {randomItems.slice(0, Math.min(randomItems.length,21)).map((el) => (
-            <Card key={el?.id} el={el} showDiscount={false} showRating={true} />
+          {items.map(el => (
+            <Card key={el?.id} el={el}/>
           ))}
         </Slider>
       )}

@@ -7,7 +7,12 @@ import {
   Box,
   Button,
 } from "@mui/material";
-import { useTranslation } from 'react-i18next';
+import { FaRegHeart, FaStar, FaStarHalfAlt } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux"
+import { addItem } from "../../redux/slices/cartSlice"
+import { addToLike, removeFromLike } from "../../redux/slices/likeSlice"
+import { toast } from "react-toastify"
+import { RiDeleteBinLine } from "react-icons/ri";
 
 import { FaRegHeart, FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { useDispatch } from "react-redux";
@@ -19,7 +24,7 @@ import { useNavigate } from "react-router-dom";
 
 const def_Img = "https://mui.com/static/images/cards/paella.jpg";
 
-const Card = ({ el, showDiscount, showRating }) => {
+const Card = ({ el, hideBox }) => {
   const { title, images, price, id } = el;
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -46,9 +51,23 @@ const Card = ({ el, showDiscount, showRating }) => {
           justifyContent: "space-between",
           zIndex: 100,
           width: "calc(95%)",
-        }}
+        }} 
       >
-        {showDiscount && (
+       
+       {el ? (<Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              color: "white",
+              backgroundColor: "red",
+              borderRadius: "5px",
+              padding: "2px 6px",
+              height: "25px",
+            }}
+          >
+            -30%
+          </Box>) : !hideBox && (
           <Box
             sx={{
               display: "flex",

@@ -1,4 +1,4 @@
-import { Box, Button, Container, IconButton } from "@mui/material";
+import { Box, Breadcrumbs, Button, Container, IconButton } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { TiDelete } from "react-icons/ti";
 import { removeItem, updateQuantity } from "../../redux/slices/cartSlice";
@@ -25,7 +25,20 @@ const Cart = () => {
 
   return (
     <div>
+       <Breadcrumbs aria-label="breadcrumb">
+        <Link underline="hover" color="inherit" href="/">
+          Home
+        </Link>
+        <Link
+          underline="hover"
+          color="inherit"
+          href="/contact"
+        >
+          Contact
+        </Link>
+      </Breadcrumbs>
       <Container maxWidth="lg" sx={{ paddingTop: "180px" }}>
+     
         <Box>
           <Box
             sx={{
