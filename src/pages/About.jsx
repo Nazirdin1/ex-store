@@ -3,10 +3,13 @@ import { Box, Container, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { CiShop } from "react-icons/ci";
 import SideImage from '../assets/Side-Image.png';
+import Servises from "../assets/Services.svg"
+import Servises1 from "../assets/Services (1).svg"
+import Servises2 from "../assets/Services (2).svg"
+import Servises3 from "../assets/Services (3).svg"
 
 const About = () => {
   const { t } = useTranslation();
-
   return (
     <div>
       <Container maxWidth="lg">
@@ -29,34 +32,93 @@ const About = () => {
 
 
         </Box>
-        <Box>
-          <div>
-            <div style={{ position: 'relative' }}>
-              <CiShop style={{ position: 'absolute', marginLeft: '17px', marginTop: '17px', color: 'white' }} />
-              <div style={{
-                width: '50px',
-                height: '50px',
-                background: '#2F2E30',
-                borderRadius: '50%',
-              }}>
-                <div
-                  style={{
-                    width: '25px',
-                    height: '25px',
-                    background: '#000000',
-                    borderRadius: '50%',
-                    marginLeft: 13,
-                    marginTop: '12vh'
-                  }}></div>
-              </div>
-
-            </div>
-            <div>
-              <h1>10.5k</h1>
+        <Container style={{ paddingTop: "140px" }}>
+        <div style={{ display: "flex", gap: "30px" }}>
+          
+          <div className='blocke' style={{
+            width: 270,
+            height: 230,
+            borderRadius: "4px",
+            border: "1px solid #0000004D",
+            padding: "30px 45px 30px 35px",
+            
+          }}>
+            <div style={{
+              width: 200,
+              height: 170,
+              textAlign: "center",
+              display: "grid",
+              gap: "10px",
+              justifyContent: "center",
+            }}>
+              <img src={Servises} style={{ margin: "0px 45px 0px 55px" }} alt="" />
+              <h4 style={{ fontSize: "32px", fontWeight: "700" }}>10.5k</h4>
               <p>Sallers active our site</p>
             </div>
           </div>
-        </Box>
+          <div className='blocke' style={{
+            width: 270,
+            height: 230,
+            borderRadius: "4px",
+            border: "1px solid #0000004D",
+            padding: "30px 45px 30px 35px",
+            
+          }}>
+            <div style={{
+              width: 200,
+              height: 170,
+              textAlign: "center",
+              display: "grid",
+              gap: "10px",
+              justifyContent: "center",
+            }}>
+              <img src={Servises1} style={{ margin: "0px 45px 0px 55px" }} alt="" />
+              <h4 style={{ fontSize: "32px", fontWeight: "700" }}>33k</h4>
+              <p>Mopnthly Produduct Sale</p>
+            </div>
+          </div>
+          <div className='blocke' style={{
+            width: 270,
+            height: 230,
+            borderRadius: "4px",
+            border: "1px solid #0000004D",
+            padding: "30px 45px 30px 0px",
+          }}>
+            <div style={{
+              width: 270,
+              height: 170,
+              textAlign: "center",
+              display: "grid",
+              gap: "10px",
+              justifyContent: "center"
+            }}>
+              <img src={Servises2} style={{ margin: "0px 44px 0px 65px" }} alt="" />
+              <h4 style={{ fontSize: "32px", fontWeight: "700" }}>45.5k</h4>
+              <p>Customer active in our site</p>
+            </div>
+          </div>
+          <div className='blocke' style={{
+            width: 270,
+            height: 230,
+            borderRadius: "4px",
+            border: "1px solid #0000004D",
+            padding: "30px 29px 30px 28px",
+          }}>
+            <div style={{
+              width: 215,
+              height: 170,
+              textAlign: "center",
+              display: "grid",
+              gap: "10px",
+              justifyContent: "center"
+            }}>
+              <img src={Servises3} style={{ margin: "0px 44px 0px 60px" }} alt="" />
+              <h4 style={{ fontSize: "32px", fontWeight: "700" }}>25k</h4>
+              <p>Anual gross sale in our site</p>
+            </div>
+          </div>
+        </div>
+      </Container>
       </Container>
     </div>
   );
