@@ -11,7 +11,7 @@ import NotFoundPage from "../pages/not-found-page/NotFounPage";
 
 import FormExample from "../pages/signUp/Form";
 import LoginExample from "../pages/signUp/Login";
-import Profile1 from "../components/profile1/Profile1";
+import Profile1 from "../components/profile1/Profile";
 
 const menu = [
     {
