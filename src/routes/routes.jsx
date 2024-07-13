@@ -11,12 +11,10 @@ import NotFoundPage from "../pages/not-found-page/NotFounPage";
 
 import FormExample from "../pages/signUp/Form";
 import LoginExample from "../pages/signUp/Login";
-<<<<<<< HEAD
-import Profile1 from "../components/profile1/Profile1";
-import MyAccount from "../pages/MyAccount/MyAccount";
-=======
+
 import Profile1 from "../components/profile1/Profile";
->>>>>>> 9fa736be727571c18981c3ab68c8ff03b72e9bc8
+import MyAccount from "../pages/MyAccount/MyAccount";
+
 
 const menu = [
     {
@@ -67,7 +65,7 @@ const menu = [
     },
     {
         path: "/profile",
-        name: "Profile1",
+        name: "Profile",
         component: Profile1
     },
     {
