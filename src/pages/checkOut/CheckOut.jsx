@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, Button, Container, IconButton } from "@mui/material";
+import { Box, Breadcrumbs, Button, Container, IconButton } from "@mui/material";
 import { TiDelete } from "react-icons/ti";
 import { useDispatch, useSelector } from "react-redux";
 import { updateCart, removeItem } from "../../redux/slices/cartSlice";
@@ -7,6 +7,7 @@ import Bcash from "../../assets/Bkash.svg";
 import Visa from "../../assets/Visa.svg";
 import MasterCard from "../../assets/Mastercard.svg";
 import Nagad from "../../assets/Nagad.svg";
+import { Link } from "react-router-dom";
 
 const inputs = [
   {
@@ -35,7 +36,8 @@ const inputs = [
 const CheckOut = () => {
   const { items } = useSelector((store) => store.cart);
   const dispatch = useDispatch();
-  const total = items?.reduce((prev, next) => prev + next.price * next.quantity, 0) || 0;
+  const subtotal = items?.reduce((prev, next) => prev + next.price * next.quantity, 0) || 0;
+  const total =  subtotal - (subtotal * 0.1);
   
   const [selectedPayment, setSelectedPayment] = useState("");
 
@@ -49,6 +51,21 @@ const CheckOut = () => {
 
   return (
     <div>
+      <Breadcrumbs  aria-label="breadcrumb" style={{margin:'80px 0px 0px 135px'}}>
+        <Link underline="hover" color="#7F7F7F" to="/">
+          <p style={{color:"#7F7F7F"}}>Home</p>
+        </Link>
+        <Link underline="hover" color="#7F7F7F" to="/cart">
+          <p style={{color:"#7F7F7F"}}>Cart</p>
+        </Link>
+        <Link
+          underline="hover"
+          color="inherit"
+          to="/checkOut"
+        >
+        CheckOut
+        </Link>
+      </Breadcrumbs>
       <Container maxWidth="lg" sx={{display:'flex', justifyContent:"space-between", alignItems:"center", marginTop:"180px"}}>
         <Box width={470}>
           <h1

@@ -1,10 +1,23 @@
 
-import { Box, Container } from '@mui/material'
+import { Box, Breadcrumbs, Container } from '@mui/material'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const MyAccount = () => {
     return (
         <div>
+            <Breadcrumbs aria-label="breadcrumb" style={{ margin: '80px 1200px 0px 135px' }}>
+                <Link underline="hover" color="#7F7F7F" to="/">
+                    <p style={{ color: "#7F7F7F" }}>Home</p>
+                </Link>
+                <Link
+                    underline="hover"
+                    color="inherit"
+                    to="/my-account"
+                >
+                    My Account
+                </Link>
+            </Breadcrumbs>
             <Container>
                 <Box sx={{ mt: "180px", display: "flex", gap: "116px" }}>
                     <Box sx={{ display: "grid" }}>
@@ -44,21 +57,21 @@ const MyAccount = () => {
                                 <input type="text" placeholder='Kingston, 5236, United State' style={{ width: "330px", height: "50px", background: "#F5F5F5", borderRadius: "4px", padding: "13px 16px 13px 16px" }} />
                             </div>
                         </Box>
-                        <Box sx={{display:"grid" , gap:"15px"}}>
+                        <Box sx={{ display: "grid", gap: "15px" }}>
                             <p>Password Changes</p>
-                            <input type="text" style={{ width: 710, height: 50, background: "#F5F5F5", borderRadius: '4px', padding: "13px 16px 13px 16px" }} placeholder='Current Passwod'/>
-                            <input type="text" style={{ width: 710, height: 50, background: "#F5F5F5", borderRadius: '4px', padding: "13px 16px 13px 16px" }} placeholder='New Passwod'/>
-                            <input type="text" style={{ width: 710, height: 50, background: "#F5F5F5", borderRadius: '4px', padding: "13px 16px 13px 16px" }} placeholder='Confirm New Passwod'/>
+                            <input type="text" style={{ width: 710, height: 50, background: "#F5F5F5", borderRadius: '4px', padding: "13px 16px 13px 16px" }} placeholder='Current Passwod' />
+                            <input type="text" style={{ width: 710, height: 50, background: "#F5F5F5", borderRadius: '4px', padding: "13px 16px 13px 16px" }} placeholder='New Passwod' />
+                            <input type="text" style={{ width: 710, height: 50, background: "#F5F5F5", borderRadius: '4px', padding: "13px 16px 13px 16px" }} placeholder='Confirm New Passwod' />
                         </Box>
-                        <Box sx={{display:'flex', alignItems:"center", marginLeft:"auto", gap:"35px"}}>
+                        <Box sx={{ display: 'flex', alignItems: "center", marginLeft: "auto", gap: "35px" }}>
                             <button>Cancel</button>
                             <button style={{
-                                width:214,
-                                height:56,
-                                borderRadius:"4px",
-                                padding:"16px, 48px, 16px, 48px",
-                                background:"#DB4444",
-                                color:"#fff",
+                                width: 214,
+                                height: 56,
+                                borderRadius: "4px",
+                                padding: "16px, 48px, 16px, 48px",
+                                background: "#DB4444",
+                                color: "#fff",
                             }}>Save Changes</button>
                         </Box>
                     </Box>
