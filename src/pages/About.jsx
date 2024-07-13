@@ -33,92 +33,92 @@ const About = () => {
 
         </Box>
         <Container style={{ paddingTop: "140px" }}>
-        <div style={{ display: "flex", gap: "30px" }}>
-          
-          <div className='blocke' style={{
-            width: 270,
-            height: 230,
-            borderRadius: "4px",
-            border: "1px solid #0000004D",
-            padding: "30px 45px 30px 35px",
-            
-          }}>
-            <div style={{
-              width: 200,
-              height: 170,
-              textAlign: "center",
-              display: "grid",
-              gap: "10px",
-              justifyContent: "center",
-            }}>
-              <img src={Servises} style={{ margin: "0px 45px 0px 55px" }} alt="" />
-              <h4 style={{ fontSize: "32px", fontWeight: "700" }}>10.5k</h4>
-              <p>Sallers active our site</p>
-            </div>
-          </div>
-          <div className='blocke' style={{
-            width: 270,
-            height: 230,
-            borderRadius: "4px",
-            border: "1px solid #0000004D",
-            padding: "30px 45px 30px 35px",
-            
-          }}>
-            <div style={{
-              width: 200,
-              height: 170,
-              textAlign: "center",
-              display: "grid",
-              gap: "10px",
-              justifyContent: "center",
-            }}>
-              <img src={Servises1} style={{ margin: "0px 45px 0px 55px" }} alt="" />
-              <h4 style={{ fontSize: "32px", fontWeight: "700" }}>33k</h4>
-              <p>Mopnthly Produduct Sale</p>
-            </div>
-          </div>
-          <div className='blocke' style={{
-            width: 270,
-            height: 230,
-            borderRadius: "4px",
-            border: "1px solid #0000004D",
-            padding: "30px 45px 30px 0px",
-          }}>
-            <div style={{
+          <div style={{ display: "flex", gap: "30px" }}>
+
+            <div className='blocke' style={{
               width: 270,
-              height: 170,
-              textAlign: "center",
-              display: "grid",
-              gap: "10px",
-              justifyContent: "center"
+              height: 230,
+              borderRadius: "4px",
+              border: "1px solid #0000004D",
+              padding: "30px 45px 30px 35px",
+
             }}>
-              <img src={Servises2} style={{ margin: "0px 44px 0px 65px" }} alt="" />
-              <h4 style={{ fontSize: "32px", fontWeight: "700" }}>45.5k</h4>
-              <p>Customer active in our site</p>
+              <div style={{
+                width: 200,
+                height: 170,
+                textAlign: "center",
+                display: "grid",
+                gap: "10px",
+                justifyContent: "center",
+              }}>
+                <img src={Servises} style={{ margin: "0px 45px 0px 55px" }} alt="" />
+                <h4 style={{ fontSize: "32px", fontWeight: "700" }}>10.5k</h4>
+                {t('Sallers active our site')}
+              </div>
+            </div>
+            <div className='blocke' style={{
+              width: 270,
+              height: 230,
+              borderRadius: "4px",
+              border: "1px solid #0000004D",
+              padding: "30px 45px 30px 35px",
+
+            }}>
+              <div style={{
+                width: 200,
+                height: 170,
+                textAlign: "center",
+                display: "grid",
+                gap: "10px",
+                justifyContent: "center",
+              }}>
+                <img src={Servises1} style={{ margin: "0px 45px 0px 55px" }} alt="" />
+                <h4 style={{ fontSize: "32px", fontWeight: "700" }}>33k</h4>
+                {t('Mopnthly Produduct Sale')}
+              </div>
+            </div>
+            <div className='blocke' style={{
+              width: 270,
+              height: 230,
+              borderRadius: "4px",
+              border: "1px solid #0000004D",
+              padding: "30px 45px 30px 0px",
+            }}>
+              <div style={{
+                width: 270,
+                height: 170,
+                textAlign: "center",
+                display: "grid",
+                gap: "10px",
+                justifyContent: "center"
+              }}>
+                <img src={Servises2} style={{ margin: "0px 44px 0px 65px" }} alt="" />
+                <h4 style={{ fontSize: "32px", fontWeight: "700" }}>45.5k</h4>
+                {t('Customer active in our site')}
+              </div>
+            </div>
+            <div className='blocke' style={{
+              width: 270,
+              height: 230,
+              borderRadius: "4px",
+              border: "1px solid #0000004D",
+              padding: "30px 29px 30px 28px",
+            }}>
+              <div style={{
+                width: 215,
+                height: 170,
+                textAlign: "center",
+                display: "grid",
+                gap: "10px",
+                justifyContent: "center"
+              }}>
+                <img src={Servises3} style={{ margin: "0px 44px 0px 60px" }} alt="" />
+                <h4 style={{ fontSize: "32px", fontWeight: "700" }}>25k</h4>
+                {t('Anual gross sale in our site')}
+              </div>
             </div>
           </div>
-          <div className='blocke' style={{
-            width: 270,
-            height: 230,
-            borderRadius: "4px",
-            border: "1px solid #0000004D",
-            padding: "30px 29px 30px 28px",
-          }}>
-            <div style={{
-              width: 215,
-              height: 170,
-              textAlign: "center",
-              display: "grid",
-              gap: "10px",
-              justifyContent: "center"
-            }}>
-              <img src={Servises3} style={{ margin: "0px 44px 0px 60px" }} alt="" />
-              <h4 style={{ fontSize: "32px", fontWeight: "700" }}>25k</h4>
-              <p>Anual gross sale in our site</p>
-            </div>
-          </div>
-        </div>
-      </Container>
+        </Container>
       </Container>
     </div>
   );

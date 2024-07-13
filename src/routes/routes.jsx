@@ -8,9 +8,9 @@ import Favorite from "../pages/favorite/Favorite";
 import Contact from "../pages/contact/Contact";
 import About from "../pages/About";
 import NotFoundPage from "../pages/not-found-page/NotFounPage";
-
 import FormExample from "../pages/signUp/Form";
 import LoginExample from "../pages/signUp/Login";
+
 import Profile1 from "../components/profile1/Profile1";
 import SignUp from "../pages/signUp/SignUp";
 
@@ -71,16 +71,21 @@ const menu = [
         name: "Profile1",
         component: Profile1
     },
+    {
+        path: "/my-account",
+        name: "MyAccount",
+        component: MyAccount
+    }
 ];
 
 const AppRoutes = () => {
     return (
-            <Routes>
-                {menu.map(route => (
-                    <Route key={route.path} path={route.path} element={<route.component />} />
-                ))}
-                <Route path="*" element={<NotFoundPage/>}/>
-            </Routes>
+        <Routes>
+            {menu.map(route => (
+                <Route key={route.path} path={route.path} element={<route.component />} />
+            ))}
+            <Route path="*" element={<NotFoundPage />} />
+        </Routes>
     );
 };
 
