@@ -12,6 +12,7 @@ import NotFoundPage from "../pages/not-found-page/NotFounPage";
 import FormExample from "../pages/signUp/Form";
 import LoginExample from "../pages/signUp/Login";
 import Profile1 from "../components/profile1/Profile1";
+import SignUp from "../pages/signUp/SignUp";
 
 const menu = [
     {
@@ -20,8 +21,13 @@ const menu = [
         component: HomePage
     },
     {
-        path: "/form",
+        path: "/signup",
         name: "SignUp",
+        component: SignUp
+    },
+    {
+        path: "/form",
+        name: "Form",
         component: FormExample
     },
     {

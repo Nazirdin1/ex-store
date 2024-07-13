@@ -3,7 +3,8 @@ import SideImage from "../../assets/sign-up-fon.png";
 import { Link } from "react-router-dom";
 const url = "https://api.escuelajs.co/api/v1/users/";
 
-export default function FormExample({ setIsSuccess }) {
+export default function FormExample(props) {
+    const {setIsSuccess} = props
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     const form = evt.target;
@@ -24,6 +25,7 @@ export default function FormExample({ setIsSuccess }) {
     }
     const response = await req.json();
     console.log(response);
+
   };
 
   return (

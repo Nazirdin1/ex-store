@@ -16,7 +16,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Search from "../search/Search";
 import { FaRegHeart } from "react-icons/fa";
 import { GrCart } from "react-icons/gr";
-import { VscAccount } from "react-icons/vsc";
+// import { VscAccount } from "react-icons/vsc";
 
 
 
@@ -164,9 +164,6 @@ const {items: likeItems} = useSelector(store => store.like)
               position:"relative"
             }} >
               <GrCart  />  {items.length > 0 && cartCount}
-            </IconButton>
-            <IconButton sx={{display:'none'}}>
-              <VscAccount/> 
             </IconButton>
           </Box>
         </Toolbar>
