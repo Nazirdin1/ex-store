@@ -16,7 +16,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Search from "../search/Search";
 import { FaRegHeart } from "react-icons/fa";
 import { GrCart } from "react-icons/gr";
-import { SiDaf } from "react-icons/si";
+import { VscAccount } from "react-icons/vsc";
 
 
 
@@ -154,9 +154,9 @@ const {items: likeItems} = useSelector(store => store.like)
               </Link>
             ))}
           </Box>
-          <Box sx={{display:"flex" ,ml:"28px"}}>
+          <Box sx={{display:"flex" ,gap:"16px"}}>
             <Search  />
-            <IconButton component={Link} to="/favorite" sx={{ml:"24px",mr:"16px"}}>
+            <IconButton component={Link} to="/favorite" sx={{ml:"24px"}}>
               <FaRegHeart />  {likeItems.length > 0 && favoriteCount}
             </IconButton>
             <IconButton component={Link} to="/cart"
@@ -165,10 +165,9 @@ const {items: likeItems} = useSelector(store => store.like)
             }} >
               <GrCart  />  {items.length > 0 && cartCount}
             </IconButton>
-            {/* <IconButton 
-             >
-              <SiDaf/> 
-            </IconButton> */}
+            <IconButton sx={{display:'none'}}>
+              <VscAccount/> 
+            </IconButton>
           </Box>
         </Toolbar>
       </Container>
