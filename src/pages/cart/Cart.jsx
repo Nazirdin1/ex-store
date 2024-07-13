@@ -25,20 +25,19 @@ const Cart = () => {
 
   return (
     <div>
-       <Breadcrumbs aria-label="breadcrumb">
-        <Link underline="hover" color="inherit" href="/">
-          Home
+      <Breadcrumbs  aria-label="breadcrumb" style={{margin:'80px 1200px 0px 135px'}}>
+        <Link underline="hover" color="#7F7F7F" to="/">
+          <p style={{color:"#7F7F7F"}}>Home</p>
         </Link>
         <Link
           underline="hover"
           color="inherit"
-          href="/contact"
+          to="/cart"
         >
-          Contact
+        Cart
         </Link>
-      </Breadcrumbs>
+      </Breadcrumbs>
       <Container maxWidth="lg" sx={{ paddingTop: "180px" }}>
-     
         <Box>
           <Box
             sx={{
