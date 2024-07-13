@@ -12,6 +12,7 @@ import NotFoundPage from "../pages/not-found-page/NotFounPage";
 import FormExample from "../pages/signUp/Form";
 import LoginExample from "../pages/signUp/Login";
 import Profile1 from "../components/profile1/Profile1";
+import MyAccount from "../pages/MyAccount/MyAccount";
 
 const menu = [
     {
@@ -65,6 +66,11 @@ const menu = [
         name: "Profile1",
         component: Profile1
     },
+    {
+        path: "/my-account",
+        name: "MyAccount",
+        component: MyAccount
+    }
 ];
 
 const AppRoutes = () => {
