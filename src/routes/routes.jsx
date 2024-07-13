@@ -8,15 +8,10 @@ import Favorite from "../pages/favorite/Favorite";
 import Contact from "../pages/contact/Contact";
 import About from "../pages/About";
 import NotFoundPage from "../pages/not-found-page/NotFounPage";
-
 import FormExample from "../pages/signUp/Form";
 import LoginExample from "../pages/signUp/Login";
-<<<<<<< HEAD
-import Profile1 from "../components/profile1/Profile1";
 import MyAccount from "../pages/MyAccount/MyAccount";
-=======
 import Profile1 from "../components/profile1/Profile";
->>>>>>> 9fa736be727571c18981c3ab68c8ff03b72e9bc8
 
 const menu = [
     {
@@ -79,12 +74,12 @@ const menu = [
 
 const AppRoutes = () => {
     return (
-            <Routes>
-                {menu.map(route => (
-                    <Route key={route.path} path={route.path} element={<route.component />} />
-                ))}
-                <Route path="*" element={<NotFoundPage/>}/>
-            </Routes>
+        <Routes>
+            {menu.map(route => (
+                <Route key={route.path} path={route.path} element={<route.component />} />
+            ))}
+            <Route path="*" element={<NotFoundPage />} />
+        </Routes>
     );
 };
 
