@@ -36,7 +36,8 @@ const inputs = [
 const CheckOut = () => {
   const { items } = useSelector((store) => store.cart);
   const dispatch = useDispatch();
-  const total = items?.reduce((prev, next) => prev + next.price * next.quantity, 0) || 0;
+  const subtotal = items?.reduce((prev, next) => prev + next.price * next.quantity, 0) || 0;
+  const total =  subtotal - (subtotal * 0.1);
   
   const [selectedPayment, setSelectedPayment] = useState("");
 
