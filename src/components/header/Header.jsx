@@ -1,3 +1,4 @@
+// <<<<<<< HEAD
 // import { useState } from "react";
 // import { headerMenu } from "../../constants";
 
@@ -215,8 +216,12 @@
 
 // export default Header;
 
+/////------
 
-import { useState } from "react";
+
+// =======
+import { useEffect, useState } from "react";
+// >>>>>>> 4756f161cfe1620bd04fb9807d4d4ba0a4ef9572
 import { headerMenu } from "../../constants";
 import {
   AppBar,
@@ -226,15 +231,24 @@ import {
   Menu,
   Box,
   IconButton,
-  MenuItem,
+  MenuItem
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Search from "../search/Search";
 import { FaRegHeart } from "react-icons/fa";
 import { GrCart } from "react-icons/gr";
+// <<<<<<< HEAD
 import { LuUser } from "react-icons/lu";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+// =======
+import { VscAccount } from "react-icons/vsc";
+
+
+
+// import {Link } from "react-router-dom";
+// import {useSelector} from "react-redux"
+// >>>>>>> 4756f161cfe1620bd04fb9807d4d4ba0a4ef9572
 import { useTranslation } from "react-i18next";
 import { BiLogOut } from "react-icons/bi";
 import { ImUser } from "react-icons/im";
@@ -246,6 +260,18 @@ const Header = () => {
   const [userBlockOpen, setUserBlockOpen] = useState(false);
   const { items } = useSelector((store) => store.cart);
   const { items: likeItems } = useSelector((store) => store.like);
+
+const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+
+useEffect(() => {
+  // Здесь вы можете проверить состояние аутентификации пользователя
+  // Например, проверка наличия токена в localStorage
+  const token = localStorage.getItem("token");
+  if (token) {
+    setIsAuthenticated(true);
+  }
+}, []);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -357,10 +383,17 @@ const Header = () => {
               </Link>
             ))}
           </Box>
+{/* <<<<<<< HEAD */}
           <Box sx={{ display: "flex", ml: "28px" }}>
             <Search />
             <IconButton component={Link} to="/favorite" sx={{ ml: "24px", mr: "16px", position: "relative" }}>
               <FaRegHeart /> {likeItems.length > 0 && favoriteCount}
+{/* ======= */}
+          <Box sx={{display:"flex" ,gap:"16px", alignItems:'center'}}>
+            <Search  />
+            <IconButton component={Link} to="/favorite" >
+              <FaRegHeart />  {likeItems.length > 0 && favoriteCount}
+{/* >>>>>>> 4756f161cfe1620bd04fb9807d4d4ba0a4ef9572 */}
             </IconButton>
             <IconButton component={Link} to="/cart" sx={{ position: "relative" }}>
               <GrCart /> {items.length > 0 && cartCount}
@@ -393,8 +426,20 @@ const Header = () => {
                 </Box>
               )}
             </IconButton>
+{/* <<<<<<< HEAD */}
+{/* ======= */}
+            <IconButton
+              component={Link}
+              to={isAuthenticated ? "/profile" : "/login"}
+              sx={{
+                display: "block",
+              }}
+            >
+              <VscAccount />
+            </IconButton>
+{/* >>>>>>> 4756f161cfe1620bd04fb9807d4d4ba0a4ef9572 */}
           </Box>
-        </Toolbar>
+        </ToolBar>
       </Container>
     </AppBar>
   );

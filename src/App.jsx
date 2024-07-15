@@ -15,7 +15,6 @@ const App = () => {
   };
   return (
     <div>
-     
       <ToastContainer />
       <Box sx={{ bgcolor: "#000", py: "12px" }}>
         <Container
@@ -53,7 +52,7 @@ const App = () => {
         </Container>
       </Box>
       <Header />
-    
+
       <AppRoutes />
 
       <Footer />
