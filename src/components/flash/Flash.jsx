@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Card from "../card/Card";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
-import ReactLoading from 'react-loading';
+// import ReactLoading from 'react-loading';
 
 const Flash = () => {
   const { items, categoryName } = useSelector((store) => store.products);
@@ -60,8 +60,10 @@ const Flash = () => {
   };
 
   if (items.length === 0) {
-    return <p style={{display:"grid",alignItems:'center', justifyContent:'center'}}><ReactLoading color="#0000000"/> Loading...</p> 
+    return <p style={{display:"grid",alignItems:'center', justifyContent:'center'}}> Loading...</p> 
   }
+
+  // <ReactLoading color="#0000000"/>
 
   return (
     <Container maxWidth="lg" sx={{ marginTop: "100px", padding: "0 20px" }}>
