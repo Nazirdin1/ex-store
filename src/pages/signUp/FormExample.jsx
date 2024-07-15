@@ -87,6 +87,7 @@
 // }
 
 
+// import React from 'react';
 import { Container } from "@mui/material";
 import SideImage from "../../assets/sign-up-fon.png";
 import { Link } from "react-router-dom";
@@ -130,25 +131,25 @@ export default function FormExample( setIsSuccess ) {
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <form style={{ display: "flex", flexDirection: "column", gap: "40px" }} className="space-y-6" onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="name" className="block text-base font-normal leading-6 text-gray-400"></label>
+              <label htmlFor="name" className="block text-base font-normal leading-6 text-gray-400">Name</label>
               <div className="mt-2" style={{ width: "370px", borderBottom: "1.5px solid #999999" }}>
                 <input style={{ width: "100%", outline: "none" }} id="name" name="name" type="text" placeholder="Name" required />
               </div>
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900"></label>
+              <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">Email or Phone Number</label>
               <div className="mt-2" style={{ width: "370px", borderBottom: "1.5px solid #999999" }}>
                 <input style={{ width: "100%", outline: "none" }} id="email" name="email" type="email" autoComplete="email" required placeholder="Email or Phone Number" />
               </div>
             </div>
             <div>
-              <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900"></label>
+              <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">Password</label>
               <div className="mt-2" style={{ width: "370px", borderBottom: "1.5px solid #999999" }}>
                 <input style={{ width: "100%", outline: "none" }} id="password" name="password" type="password" autoComplete="current-password" required placeholder="Password" />
               </div>
             </div>
             <div>
-              <label htmlFor="avatar" className="block text-sm font-medium leading-6 text-gray-900"></label>
+              <label htmlFor="avatar" className="block text-sm font-medium leading-6 text-gray-900">User Avatar</label>
               <div className="mt-2" style={{ width: "370px", borderBottom: "1.5px solid #999999" }}>
                 <input style={{ width: "100%", outline: "none" }} id="avatar" name="avatar" type="url" required placeholder="User Avatar" />
               </div>
@@ -170,4 +171,5 @@ export default function FormExample( setIsSuccess ) {
     </Container>
   );
 }
+
 
